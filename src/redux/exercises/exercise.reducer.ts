@@ -1,6 +1,9 @@
 import {ExerciseActions, exerciseActionTypes} from './exercise.types';
+import mockData from '../../mocks/exercises';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = {
+  ...mockData,
+};
 
 type InitialExerState = typeof INITIAL_STATE;
 
