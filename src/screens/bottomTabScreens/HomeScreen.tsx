@@ -3,7 +3,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {View, Text} from 'react-native';
 import {RootStackScreenList} from '..';
-import {Button} from '../../components/common';
+import {Button} from '../../components';
 
 type Prop = NativeStackNavigationProp<RootStackScreenList, 'history'>;
 
