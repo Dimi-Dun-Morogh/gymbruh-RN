@@ -1,10 +1,13 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {ExerciseListItem} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
+import {Exercise} from '../../redux/exercises/exercise.types';
+import {NavProp} from '../../types/routingTypes';
 
 const ExercisesScreen = () => {
+  const navigation = useNavigation<NavProp>();
   const exercises = useAppSelector(state => state.exercisesState);
 
   const renderExercises = () => {
@@ -18,11 +21,13 @@ const ExercisesScreen = () => {
       <View>
         <FlatList
           data={data}
-          renderItem={({item}) => (
+          renderItem={({item}: {item: Exercise}) => (
             <ExerciseListItem
               name={item.name}
               date={item.lastDate}
-              onPress={() => null}
+              onPress={() =>
+                navigation.navigate('exercDetail', {exercise: item})
+              }
             />
           )}
         />

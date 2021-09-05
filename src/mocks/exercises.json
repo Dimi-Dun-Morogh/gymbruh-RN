@@ -8,11 +8,13 @@
     "allSets": 1,
     "recordReps": {
       "reps": 1,
-      "weight": null
+      "weight": null,
+      "date": "26.08.2021, 17:09:58"
     },
     "recordWeight": {
       "reps": 1,
-      "weight": 0
+      "weight": 0,
+      "date": "26.08.2021, 17:09:58"
     }
   },
   "id148": {
@@ -24,11 +26,13 @@
     "allSets": 1,
     "recordReps": {
       "reps": 1,
-      "weight": null
+      "weight": null,
+      "date": null
     },
     "recordWeight": {
       "reps": 1,
-      "weight": 0
+      "weight": 0,
+      "date": null
     }
   },
   "id48": {
@@ -40,11 +44,13 @@
     "allSets": 1,
     "recordReps": {
       "reps": 11,
-      "weight": 99
+      "weight": 99,
+      "date": "26.08.2021, 17:09:58"
     },
     "recordWeight": {
       "reps": 11,
-      "weight": 99
+      "weight": 99,
+      "date": "26.08.2021, 17:09:58"
     }
   }
 }

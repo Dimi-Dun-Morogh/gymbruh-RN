@@ -1,11 +1,11 @@
-import {ExerciseActions, exerciseActionTypes} from './exercise.types';
+import {Exercise, ExerciseActions, exerciseActionTypes} from './exercise.types';
 import mockData from '../../mocks/exercises';
 
 const INITIAL_STATE = {
   ...mockData,
 };
 
-type InitialExerState = typeof INITIAL_STATE;
+type InitialExerState = {} | {[key: string]: Exercise};
 
 const exerciseReducer = (
   state: InitialExerState = INITIAL_STATE,

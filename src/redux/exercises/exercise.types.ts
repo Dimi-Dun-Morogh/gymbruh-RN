@@ -14,10 +14,12 @@ export type Exercise = {
   recordReps: {
     reps: number;
     weight: number | null;
+    date: string | null;
   };
   recordWeight: {
     reps: number;
     weight: number;
+    date: string | null;
   };
 };
 

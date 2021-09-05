@@ -1,14 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
 import React from 'react';
 import {View, Text} from 'react-native';
-import {RootStackScreenList} from '..';
-import {Button} from '../../components';
 
-type Prop = NativeStackNavigationProp<RootStackScreenList, 'history'>;
+import {Button} from '../../components';
+import {NavProp} from '../../types/routingTypes';
 
 const HomeScreen = () => {
-  const navigation = useNavigation<Prop>();
+  const navigation = useNavigation<NavProp>();
   return (
     <View>
       <Text>main</Text>

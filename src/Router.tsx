@@ -8,27 +8,24 @@ import {
   HomeScreen,
   ExercisesScreen,
   RoutineScreen,
-  BottomTabScreenList,
-  RootStackScreenList,
   CreateExerciseScreen,
 } from './screens';
+import {
+  RootStackScreenList,
+  BottomTabScreenList,
+  NavProp,
+} from './types/routingTypes';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {HeaderButton} from './components';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+
+import ExerciseDetailScreen from './screens/stackScreens/ExerciseDetailScreen';
 
 const Stack = createNativeStackNavigator<RootStackScreenList>();
 
 const Tab = createBottomTabNavigator<BottomTabScreenList>();
 
-type Prop = NativeStackNavigationProp<RootStackScreenList, 'history'>;
-
 const Tabs = () => {
-  const {
-    headerAdditional: {headerStyle, headerTitle},
-    tabsAdditional,
-  } = plusStyles;
-
-  const navigation = useNavigation<Prop>();
+  const navigation = useNavigation<NavProp>();
 
   return (
     <Tab.Navigator
@@ -60,6 +57,7 @@ const Tabs = () => {
         name="exercises"
         component={ExercisesScreen}
         options={{
+          title: 'упражнения',
           headerStyle: headerStyle,
           headerTitleStyle: headerTitle,
           tabBarLabel: 'Упражнения',
@@ -88,19 +86,31 @@ const Router = () => {
           contentStyle: {
             backgroundColor: '#2c1338',
           },
+          headerTintColor: 'white',
+          headerStyle: headerStyle,
+          headerTitleStyle: headerTitle,
         }}>
         <Stack.Screen
           name="tabs"
           component={Tabs}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="history" component={HistoryScreen} />
+        <Stack.Screen
+          name="history"
+          options={{title: 'история'}}
+          component={HistoryScreen}
+        />
         <Stack.Screen
           name="exercCreate"
           component={CreateExerciseScreen}
           options={{
             title: 'создать упражнение',
           }}
+        />
+        <Stack.Screen
+          name="exercDetail"
+          component={ExerciseDetailScreen}
+          options={({route}) => ({title: route.params.exercise.name})}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -139,4 +149,8 @@ const plusStyles = {
   },
 };
 // #8a63f2
+const {
+  headerAdditional: {headerStyle, headerTitle},
+  tabsAdditional,
+} = plusStyles;
 export default Router;

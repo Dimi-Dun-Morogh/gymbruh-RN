@@ -3,7 +3,7 @@ import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 
 type Props = {
   name: string;
-  date: string;
+  date: string | null;
   onPress: () => void;
 };
 
