@@ -1,8 +1,12 @@
-### TO DO ::trollface:
+### TO DO :trollface:
 
-- [x] implement exercise creation screen/state/logic ✅ (26.08.2021)
-- [x] implement exerciseScreen render ✅ (26.08.2021)
-- [x] implement detailed exerciseItem Screen ✅ (6.09.2021)
-- [ ] implement workout sesh creation screen/state/logic
-- [ ] implement history state/logic
+- [x] exercise creation screen/state/logic ✅ (26.08.2021)
+- [x] exerciseScreen render ✅ (26.08.2021)
+- [x] detailed exerciseItem Screen ✅ (6.09.2021)
+- [x] workout  creation screen/state/logic ✅ (7.09.2021)
+- [ ] delete workout
+- [ ] edit/delete exercise
+- [ ] history screen/state/logic
+- [ ] workout sesh screen/state/logic
+- [ ] set async  storage for all data
 - [ ] fix icons for IOS

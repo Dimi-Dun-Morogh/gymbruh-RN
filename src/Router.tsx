@@ -9,6 +9,9 @@ import {
   ExercisesScreen,
   RoutineScreen,
   CreateExerciseScreen,
+  CreateRoutineScreen,
+  ExerciseDetailScreen,
+  RoutineDetailsScreen,
 } from './screens';
 import {
   RootStackScreenList,
@@ -17,8 +20,6 @@ import {
 } from './types/routingTypes';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {HeaderButton} from './components';
-
-import ExerciseDetailScreen from './screens/stackScreens/ExerciseDetailScreen';
 
 const Stack = createNativeStackNavigator<RootStackScreenList>();
 
@@ -29,7 +30,10 @@ const Tabs = () => {
 
   return (
     <Tab.Navigator
-      screenOptions={{...styles, ...tabsAdditional}}
+      screenOptions={{
+        ...styles,
+        ...tabsAdditional,
+      }}
       sceneContainerStyle={{backgroundColor: '#2c1338'}}>
       <Tab.Screen
         name="home"
@@ -47,7 +51,14 @@ const Tabs = () => {
         component={RoutineScreen}
         options={{
           tabBarLabel: 'Программы',
-          headerShown: false,
+          headerRight: () => {
+            return (
+              <HeaderButton
+                iconName="add"
+                onPress={() => navigation.navigate('routineCreate')}
+              />
+            );
+          },
           tabBarIcon: ({color, size}) => (
             <Icon name="repeat" color={color} size={size} />
           ),
@@ -58,8 +69,6 @@ const Tabs = () => {
         component={ExercisesScreen}
         options={{
           title: 'упражнения',
-          headerStyle: headerStyle,
-          headerTitleStyle: headerTitle,
           tabBarLabel: 'Упражнения',
           headerRight: () => {
             return (
@@ -78,41 +87,71 @@ const Tabs = () => {
   );
 };
 
+const StackNav = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#2c1338',
+        },
+        headerTintColor: 'white',
+        ...styles,
+      }}>
+      <Stack.Screen
+        name="tabs"
+        component={Tabs}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="history"
+        options={{title: 'история'}}
+        component={HistoryScreen}
+      />
+      <Stack.Screen
+        name="exercCreate"
+        component={CreateExerciseScreen}
+        options={{
+          title: 'создать упражнение',
+        }}
+      />
+      <Stack.Screen
+        name="exercDetail"
+        component={ExerciseDetailScreen}
+        options={({route}) => ({title: route.params.exercise.name})}
+      />
+      <Stack.Screen
+        name="routineCreate"
+        component={CreateRoutineScreen}
+        options={({route}) => ({
+          title: route.params?.routine.name || 'создать программу',
+        })}
+      />
+      <Stack.Screen
+        name="routineDetails"
+        component={RoutineDetailsScreen}
+        options={({route, navigation}) => ({
+          headerRight: () => {
+            return (
+              <HeaderButton
+                iconName="edit"
+                onPress={() =>
+                  navigation.navigate('routineCreate', {
+                    routine: route.params.routine,
+                  })
+                }
+              />
+            );
+          },
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const Router = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          contentStyle: {
-            backgroundColor: '#2c1338',
-          },
-          headerTintColor: 'white',
-          headerStyle: headerStyle,
-          headerTitleStyle: headerTitle,
-        }}>
-        <Stack.Screen
-          name="tabs"
-          component={Tabs}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="history"
-          options={{title: 'история'}}
-          component={HistoryScreen}
-        />
-        <Stack.Screen
-          name="exercCreate"
-          component={CreateExerciseScreen}
-          options={{
-            title: 'создать упражнение',
-          }}
-        />
-        <Stack.Screen
-          name="exercDetail"
-          component={ExerciseDetailScreen}
-          options={({route}) => ({title: route.params.exercise.name})}
-        />
-      </Stack.Navigator>
+      <StackNav />
     </NavigationContainer>
   );
 };
@@ -129,28 +168,19 @@ const styles = StyleSheet.create({
   tabBarIconStyle: {
     color: '#fff',
   },
+  headerStyle: {
+    backgroundColor: '#8a63f2',
+  },
+  headerTitleStyle: {
+    color: '#ffff',
+  },
 });
 
 const plusStyles = {
   tabsAdditional: {
     tabBarActiveTintColor: '#fff',
     tabBarActiveBackgroundColor: '#8a63f2',
-    // tabBarContentContainerStyle: {
-    //   backgroundColor: 'black',
-    // },
-  },
-  headerAdditional: {
-    headerStyle: {
-      backgroundColor: '#8a63f2',
-    },
-    headerTitle: {
-      color: '#ffff',
-    },
   },
 };
-// #8a63f2
-const {
-  headerAdditional: {headerStyle, headerTitle},
-  tabsAdditional,
-} = plusStyles;
+const {tabsAdditional} = plusStyles;
 export default Router;

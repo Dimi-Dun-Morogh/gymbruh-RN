@@ -4,3 +4,6 @@ export * from './bottomTabScreens/ExerciseScreen';
 export * from './bottomTabScreens/RoutineScreen';
 export * from './stackScreens/CreateExerciseScreen';
 export * from './stackScreens/ExerciseDetailScreen';
+export * from './stackScreens/CreateRoutineScreen';
+export * from './stackScreens/ExerciseDetailScreen';
+export * from './stackScreens/RoutineDetailsScreen';

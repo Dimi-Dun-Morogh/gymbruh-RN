@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   ...mockData,
 };
 
-type InitialExerState = {} | {[key: string]: Exercise};
+type InitialExerState = null | {[key: string]: Exercise};
 
 const exerciseReducer = (
   state: InitialExerState = INITIAL_STATE,

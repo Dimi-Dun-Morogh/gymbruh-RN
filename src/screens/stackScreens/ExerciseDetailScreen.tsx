@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import TextBlock from '../../components/common/TextBlock';
-import {NavScreenProp} from '../../types/routingTypes';
+import {TextBlock} from '../../components/';
+import {exercDetailScreenProp} from '../../types/routingTypes';
 
-const ExerciseDetailScreen = ({route}: NavScreenProp) => {
+const ExerciseDetailScreen = ({route}: exercDetailScreenProp) => {
   const {
     allSets,
     lastDate,
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ExerciseDetailScreen;
+export {ExerciseDetailScreen};

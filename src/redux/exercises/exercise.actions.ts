@@ -13,10 +13,12 @@ export const createExercise = (name: string) => {
     recordReps: {
       reps: 0,
       weight: null,
+      date: null,
     },
     recordWeight: {
       weight: 0,
       reps: 0,
+      date: null,
     },
   };
   return {
