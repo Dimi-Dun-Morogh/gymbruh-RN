@@ -8,7 +8,7 @@ import {useAppSelector} from '../../hooks/storeHooks';
 
 const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
   const {id} = route.params!.routine;
-  const exerciseState = useAppSelector(state => state.exercisesState);
+  const exerciseState = useAppSelector(state => state.exercisesState.exercises);
   const {name, exercises} = useAppSelector(
     state => state.routinesState.routines[id],
   );
@@ -35,12 +35,6 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
       />
     );
   };
-
-  // useFocusEffect(() => {
-  //   navigation.addListener('focus', () => {
-  //     navigation.setOptions({title: name});
-  //   });
-  // });
 
   useFocusEffect(
     React.useCallback(() => {

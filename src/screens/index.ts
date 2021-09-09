@@ -7,3 +7,4 @@ export * from './stackScreens/ExerciseDetailScreen';
 export * from './stackScreens/CreateRoutineScreen';
 export * from './stackScreens/ExerciseDetailScreen';
 export * from './stackScreens/RoutineDetailsScreen';
+export * from './stackScreens/WorkOutScreen';

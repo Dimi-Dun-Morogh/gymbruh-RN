@@ -8,7 +8,7 @@ import {NavProp} from '../../types/routingTypes';
 
 const ExercisesScreen = () => {
   const navigation = useNavigation<NavProp>();
-  const exercises = useAppSelector(state => state.exercisesState);
+  const exercises = useAppSelector(state => state.exercisesState.exercises);
 
   const renderExercises = () => {
     const data = Object.values(exercises);

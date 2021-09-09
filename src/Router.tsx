@@ -12,6 +12,7 @@ import {
   CreateRoutineScreen,
   ExerciseDetailScreen,
   RoutineDetailsScreen,
+  WorkOutScreen,
 } from './screens';
 import {
   RootStackScreenList,
@@ -19,7 +20,7 @@ import {
   NavProp,
 } from './types/routingTypes';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {HeaderButton} from './components';
+import {IconButton as HeaderButton} from './components';
 
 const Stack = createNativeStackNavigator<RootStackScreenList>();
 
@@ -55,6 +56,7 @@ const Tabs = () => {
             return (
               <HeaderButton
                 iconName="add"
+                size={35}
                 onPress={() => navigation.navigate('routineCreate')}
               />
             );
@@ -73,6 +75,7 @@ const Tabs = () => {
           headerRight: () => {
             return (
               <HeaderButton
+                size={35}
                 iconName="add"
                 onPress={() => navigation.navigate('exercCreate')}
               />
@@ -133,6 +136,7 @@ const StackNav = () => {
           headerRight: () => {
             return (
               <HeaderButton
+                size={35}
                 iconName="edit"
                 onPress={() =>
                   navigation.navigate('routineCreate', {
@@ -144,6 +148,7 @@ const StackNav = () => {
           },
         })}
       />
+      <Stack.Screen name="workOut" component={WorkOutScreen} />
     </Stack.Navigator>
   );
 };

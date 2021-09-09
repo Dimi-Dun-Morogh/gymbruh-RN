@@ -7,6 +7,6 @@
 - [ ] delete workout
 - [ ] edit/delete exercise
 - [ ] history screen/state/logic
-- [ ] workout sesh screen/state/logic
+- [x] workout sesh screen/state/logic ✅ (9.09.2021)
 - [ ] set async  storage for all data
 - [ ] fix icons for IOS

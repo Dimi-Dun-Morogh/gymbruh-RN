@@ -16,6 +16,7 @@ export type RootStackScreenList = {
   exercDetail: {exercise: Exercise};
   routineCreate: {routine: Routine} | undefined;
   routineDetails: {routine: Routine};
+  workOut: undefined;
 };
 
 export type NavProp = NativeStackNavigationProp<RootStackScreenList>;

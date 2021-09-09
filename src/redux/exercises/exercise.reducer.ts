@@ -1,11 +1,13 @@
 import {Exercise, ExerciseActions, exerciseActionTypes} from './exercise.types';
-import mockData from '../../mocks/exercises';
+var mockData = require('../../mocks/exercises');
 
 const INITIAL_STATE = {
-  ...mockData,
+  exercises: null || ({} as {[key: string]: Exercise}),
 };
 
-type InitialExerState = null | {[key: string]: Exercise};
+INITIAL_STATE.exercises = mockData;
+
+type InitialExerState = typeof INITIAL_STATE;
 
 const exerciseReducer = (
   state: InitialExerState = INITIAL_STATE,
@@ -15,7 +17,10 @@ const exerciseReducer = (
     case exerciseActionTypes.CREATE_EXERCISE:
       return {
         ...state,
-        [action.payload!.id]: action.payload!,
+        exercises: {
+          ...state.exercises,
+          [action.payload!.id]: action.payload!,
+        },
       };
     default:
       return state;

@@ -15,16 +15,12 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation<NavProp>();
-  const exercises = useAppSelector(state => state.exercisesState);
+  const exercises = useAppSelector(state => state.exercisesState.exercises);
 
   const onSubmit = () => {
     if (id) {
       //updating
       dispatch(createRoutine(name, [...selectedExerc], id));
-
-      const newParams = {routine: {name, id, exercises: [...selectedExerc]}};
-
-      navigation.setParams({routine: newParams});
     } else {
       dispatch(createRoutine(name, [...selectedExerc]));
     }
@@ -51,7 +47,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
     }
     const data = Object.values(exercises);
     return (
-      <View>
+      <View style={{flex: 1}}>
         <FlatList
           data={data}
           renderItem={({item}: {item: Exercise}) => (
@@ -76,7 +72,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   };
 
   return (
-    <View>
+    <View style={{flex:1}}>
       <Input
         label="enter name"
         value={name}
