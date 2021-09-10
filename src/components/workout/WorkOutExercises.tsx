@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
-import {TextBlock, WorkOutExerciseItem} from '..';
+import {ScrollView} from 'react-native';
+import {WorkOutExerciseItem} from '..';
 import {useAppSelector} from '../../hooks/storeHooks';
 
 type Props = {
@@ -10,7 +10,6 @@ type Props = {
 const WorkOutExercises = ({exercises}: Props) => {
   const allExercises = useAppSelector(state => state.exercisesState.exercises);
   if (!exercises.length) {
-    console.log('hi');
     return null;
   }
   const selectedExercises = exercises.map(id => allExercises[id]);

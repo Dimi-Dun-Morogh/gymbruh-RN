@@ -1,23 +1,47 @@
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-
-import {TextBlock, WorkOutExercises} from '../../components';
+import {startWorkOut, finishWorkOut} from '../../redux/workout/workout.actions';
+import {TextBlock, WorkOutExercises, Button} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Routine} from '../../redux/routines/routine.types';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/core';
+import {NavProp} from '../../types/routingTypes';
+import {addHistory} from '../../redux/history/history.actions';
 
 const WorkOutScreen = () => {
   const routines = useAppSelector(state => state.routinesState.routines);
   const [selectedRoutine, setSelectedRoutine] = useState<null | Routine>(null);
   const [selectedExercises, setSelectedExercises] = useState<string[] | []>([]);
+  const workOutState = useAppSelector(state => state.workOutState);
+
+  const dispatch = useDispatch();
+  const navigation = useNavigation<NavProp>();
+
+  const {sets: workOutSets, routineId} = workOutState;
 
   const handlePick = (routine: Routine | null) => {
     setSelectedRoutine(routine);
     if (routine) {
       setSelectedExercises(routine.exercises);
+      dispatch(startWorkOut(routine.id));
     } else {
       setSelectedExercises([]);
+      dispatch(startWorkOut(''));
     }
+  };
+
+  const handleFinish = () => {
+    dispatch(finishWorkOut());
+    dispatch(
+      addHistory(
+        routineId,
+        workOutSets,
+        selectedRoutine ? selectedRoutine.name : '',
+      ),
+    );
+    navigation.goBack();
   };
 
   const renderRoutines = () => {
@@ -47,10 +71,13 @@ const WorkOutScreen = () => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, paddingBottom: 5}}>
       <TextBlock>Workout</TextBlock>
       {renderRoutines()}
       <WorkOutExercises exercises={selectedExercises} />
+      {workOutSets.length ? (
+        <Button onPress={handleFinish}>Завершить тренировку</Button>
+      ) : null}
     </View>
   );
 };

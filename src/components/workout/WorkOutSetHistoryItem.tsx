@@ -1,20 +1,25 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {IconButton} from '..';
+import {WorkOutSet} from '../../redux/workout/workout.types';
 
 type Props = {
-  reps: string;
-  weight: string;
+  set: WorkOutSet;
+  onDelete: (id: string) => void;
   number: number;
 };
 
-const WorkOutSetHistoryItem = ({reps, weight, number}: Props) => {
+const WorkOutSetHistoryItem = ({
+  set: {reps, weight, id, date},
+  onDelete,
+  number,
+}: Props) => {
   return (
     <View style={styles.containerStyle}>
       <IconButton
         color="red"
         iconName="delete-forever"
-        onPress={() => null}
+        onPress={() => onDelete(id)}
         size={33}
       />
 
@@ -22,7 +27,9 @@ const WorkOutSetHistoryItem = ({reps, weight, number}: Props) => {
         {' '}
         {number})повторений - {reps} вес - {weight}
       </Text>
-      <Text style={styles.dateStyle}>-{new Date().toLocaleTimeString()}</Text>
+      <Text style={styles.dateStyle}>
+        {new Date(date).toLocaleTimeString()}
+      </Text>
     </View>
   );
 };

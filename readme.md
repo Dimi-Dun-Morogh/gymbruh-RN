@@ -8,5 +8,5 @@
 - [ ] edit/delete exercise
 - [ ] history screen/state/logic
 - [x] workout sesh screen/state/logic ✅ (9.09.2021)
-- [ ] set async  storage for all data
+- [x] set async/persist  storage for all data ✅ (10.09.2021)
 - [ ] fix icons for IOS

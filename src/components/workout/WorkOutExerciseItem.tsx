@@ -1,31 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {WorkOutSet, WorkOutSetHistoryItem} from '..';
 import {generateId} from '../../helpers';
+import {useAppSelector} from '../../hooks/storeHooks';
 import {Exercise} from '../../redux/exercises/exercise.types';
+import {addNewSet, deleteSet} from '../../redux/workout/workout.actions';
 
 type Props = {
   exercise: Exercise;
 };
 
-type SetItem = {
-  reps: string;
-  weight: string;
-  id: string;
-};
-
 const WorkOutExerciseItem = ({exercise}: Props) => {
-  const [doneSets, setDoneSet] = useState<SetItem[] | []>([]);
+  const allSets = useAppSelector(state => state.workOutState.sets);
+  const doneSets = allSets.filter(set => set.exerciseId === exercise.id);
+  const dispatch = useDispatch();
 
   const onSetSubmit = (reps: string, weight: string) => {
-    setDoneSet([
-      ...doneSets,
-      {
+    dispatch(
+      addNewSet({
         reps,
         weight,
         id: generateId.id(),
-      },
-    ]);
+        exerciseId: exercise.id,
+        date: Number(new Date()),
+      }),
+    );
   };
 
   return (
@@ -37,9 +37,9 @@ const WorkOutExerciseItem = ({exercise}: Props) => {
           {doneSets.map((item, index) => (
             <WorkOutSetHistoryItem
               key={item.id}
-              weight={item.weight}
-              reps={item.reps}
+              set={item}
               number={index + 1}
+              onDelete={id => dispatch(deleteSet(id))}
             />
           ))}
         </View>
