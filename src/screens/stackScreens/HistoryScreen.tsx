@@ -1,14 +1,23 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {View, Text, StyleSheet} from 'react-native';
+import {HistoryList} from '../../components';
+import {useAppSelector} from '../../hooks/storeHooks';
+import {WorkOutSet} from '../../redux/workout/workout.types';
 
 const HistoryScreen = () => {
+  const history = useAppSelector(state => state.historyState.items);
+  const historyExerc = history.reduce((acc, item) => {
+    return [...acc, ...item.sets];
+  }, [] as WorkOutSet[]);
+
   return (
     <View>
       <Text>История</Text>
-      <Icon name="home" size={30} color="#900" />
+      <HistoryList historyItems={historyExerc} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({});
 
 export {HistoryScreen};

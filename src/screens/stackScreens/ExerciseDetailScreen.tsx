@@ -13,6 +13,7 @@ const ExerciseDetailScreen = ({route}: exercDetailScreenProp) => {
     recordReps,
     recordWeight,
   } = route.params!.exercise;
+
   return (
     <View style={styles.container}>
       <TextBlock>{name}</TextBlock>
@@ -24,7 +25,7 @@ const ExerciseDetailScreen = ({route}: exercDetailScreenProp) => {
       </TextBlock>
       <TextBlock>
         рекорд повторений:{'\n'} повторений - {recordReps.reps} вес -
-        {recordReps.weight || '-'} {'\n'}дата - {recordWeight.date || '-'}
+        {recordReps.weight || '-'} {'\n'}дата - {recordReps.date || '-'}
       </TextBlock>
       <TextBlock>
         рекорд веса:{'\n'} вес - {recordWeight.weight} повторений -{' '}

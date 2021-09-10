@@ -1,19 +1,21 @@
 import {IAction} from '../store';
+import {WorkOutSet} from '../workout/workout.types';
 
 export enum exerciseActionTypes {
   CREATE_EXERCISE = 'CREATE_EXERCISE',
+  UPDATE_EXERCISE = 'UPDATE_EXERCISE',
 }
 
 export type Exercise = {
   id: string;
   name: string;
-  lastDate: string | null;
+  lastDate: string;
   lastReps: number;
-  lastWeight: number | null;
-  allSets: number | null;
+  lastWeight: number;
+  allSets: number;
   recordReps: {
     reps: number;
-    weight: number | null;
+    weight: number;
     date: string | null;
   };
   recordWeight: {
@@ -24,5 +26,6 @@ export type Exercise = {
 };
 
 type CreateExercise = IAction<exerciseActionTypes.CREATE_EXERCISE, Exercise>;
+type UpdateExercise = IAction<exerciseActionTypes.UPDATE_EXERCISE, WorkOutSet>;
 
-export type ExerciseActions = CreateExercise;
+export type ExerciseActions = CreateExercise | UpdateExercise;

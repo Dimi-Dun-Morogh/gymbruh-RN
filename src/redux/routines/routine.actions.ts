@@ -17,3 +17,10 @@ export const createRoutine = (
     payload: newRoutine,
   };
 };
+
+export const deleteRoutine = (id: string) => {
+  return {
+    type: routineActionTypes.DELETE_ROUTINE,
+    payload: id,
+  };
+};

@@ -2,6 +2,7 @@ import {IAction} from '../store';
 
 export enum routineActionTypes {
   CREATE_ROUTINE = 'CREATE_ROUTINE',
+  DELETE_ROUTINE = 'DELETE_ROUTINE',
 }
 
 export type Routine = {
@@ -11,5 +12,6 @@ export type Routine = {
 };
 
 type CreateRoutine = IAction<routineActionTypes.CREATE_ROUTINE, Routine>;
+type DeleteRoutine = IAction<routineActionTypes.DELETE_ROUTINE, string>;
 
-export type RoutineActions = CreateRoutine;
+export type RoutineActions = CreateRoutine | DeleteRoutine;

@@ -1,11 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {View, FlatList} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {Input, Button, ExerciseListItem, TextBlock} from '../../components';
+import {
+  Input,
+  Button,
+  ExerciseListItem,
+  TextBlock,
+  IconButton as HeaderButton,
+} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Exercise} from '../../redux/exercises/exercise.types';
-import {createRoutine} from '../../redux/routines/routine.actions';
-import {routineCreateScreenProp, NavProp} from '../../types/routingTypes';
+import {
+  createRoutine,
+  deleteRoutine,
+} from '../../redux/routines/routine.actions';
+import {routineCreateScreenProp, NavPropsTabs} from '../../types/routingTypes';
 import {useNavigation} from '@react-navigation/native';
 
 const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
@@ -14,7 +23,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const [selectedExerc, setSelectedExerc] = useState<Set<string>>(new Set());
 
   const dispatch = useDispatch();
-  const navigation = useNavigation<NavProp>();
+  const navigation = useNavigation<NavPropsTabs>();
   const exercises = useAppSelector(state => state.exercisesState.exercises);
 
   const onSubmit = () => {
@@ -38,8 +47,24 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
       setName(oldName);
       setId(oldId);
       setSelectedExerc(new Set(oldExercises));
+
+      //deletion
+      navigation.setOptions({
+        headerRight: () => {
+          return (
+            <HeaderButton
+              size={35}
+              iconName="delete-forever"
+              onPress={() => {
+                navigation.navigate('routine');
+                dispatch(deleteRoutine(id));
+              }}
+            />
+          );
+        },
+      });
     }
-  }, [route.params]);
+  }, [route.params, navigation, id, dispatch]);
 
   const renderExercises = () => {
     if (!exercises) {
@@ -47,7 +72,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
     }
     const data = Object.values(exercises);
     return (
-      <View style={{flex: 1}}>
+      <View style={{marginBottom: 25}}>
         <FlatList
           data={data}
           renderItem={({item}: {item: Exercise}) => (
@@ -72,7 +97,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   };
 
   return (
-    <View style={{flex:1}}>
+    <View style={{flex: 1, justifyContent: 'center'}}>
       <Input
         label="enter name"
         value={name}

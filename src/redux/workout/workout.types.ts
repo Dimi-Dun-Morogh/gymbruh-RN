@@ -1,11 +1,12 @@
 import {IAction} from '../store';
 
 export type WorkOutSet = {
-  reps: string;
-  weight: string;
+  reps: number;
+  weight: number;
   id: string;
   exerciseId: string;
   date: number;
+  exerciseName: string;
 };
 
 export enum WorkOutActionTypes {

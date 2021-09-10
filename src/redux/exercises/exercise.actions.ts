@@ -1,4 +1,5 @@
 import {generateId} from '../../helpers';
+import {WorkOutSet} from '../workout/workout.types';
 import {Exercise, exerciseActionTypes} from './exercise.types';
 
 export const createExercise = (name: string) => {
@@ -6,13 +7,13 @@ export const createExercise = (name: string) => {
   const newExercise: Exercise = {
     id,
     name,
-    lastDate: null,
+    lastDate: '',
     lastReps: 0,
-    lastWeight: null,
-    allSets: null,
+    lastWeight: 0,
+    allSets: 0,
     recordReps: {
       reps: 0,
-      weight: null,
+      weight: 0,
       date: null,
     },
     recordWeight: {
@@ -24,5 +25,12 @@ export const createExercise = (name: string) => {
   return {
     type: exerciseActionTypes.CREATE_EXERCISE,
     payload: newExercise,
+  };
+};
+
+export const updateExercise = (set: WorkOutSet) => {
+  return {
+    type: exerciseActionTypes.UPDATE_EXERCISE,
+    payload: set,
   };
 };

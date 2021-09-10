@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import {WorkOutSet, WorkOutSetHistoryItem} from '..';
 import {generateId} from '../../helpers';
 import {useAppSelector} from '../../hooks/storeHooks';
+import {updateExercise} from '../../redux/exercises/exercise.actions';
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {addNewSet, deleteSet} from '../../redux/workout/workout.actions';
 
@@ -17,15 +18,16 @@ const WorkOutExerciseItem = ({exercise}: Props) => {
   const dispatch = useDispatch();
 
   const onSetSubmit = (reps: string, weight: string) => {
-    dispatch(
-      addNewSet({
-        reps,
-        weight,
-        id: generateId.id(),
-        exerciseId: exercise.id,
-        date: Number(new Date()),
-      }),
-    );
+    const newSet = {
+      reps: Number(reps),
+      weight: Number(weight),
+      id: generateId.id(),
+      exerciseId: exercise.id,
+      exerciseName: exercise.name,
+      date: Number(new Date()),
+    };
+    dispatch(addNewSet(newSet));
+    dispatch(updateExercise(newSet));
   };
 
   return (

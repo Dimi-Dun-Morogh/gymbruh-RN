@@ -20,6 +20,7 @@ export type RootStackScreenList = {
 };
 
 export type NavProp = NativeStackNavigationProp<RootStackScreenList>;
+export type NavPropsTabs = NativeStackNavigationProp<BottomTabScreenList>;
 
 export type exercDetailScreenProp = NativeStackScreenProps<
   RootStackScreenList,

@@ -21,6 +21,15 @@ const RoutineReducer: Reducer<InitialRoutineState, RoutineActions> = (
           [action.payload!.id]: action.payload!,
         },
       };
+    case routineActionTypes.DELETE_ROUTINE:
+      return {
+        ...state,
+        routines: Object.fromEntries(
+          Object.entries({...state.routines}).filter(
+            ([id]) => id !== action.payload!,
+          ),
+        ),
+      };
 
     default:
       return state;
