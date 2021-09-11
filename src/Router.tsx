@@ -117,11 +117,7 @@ const StackNav = () => {
           title: 'создать упражнение',
         }}
       />
-      <Stack.Screen
-        name="exercDetail"
-        component={ExerciseDetailScreen}
-        options={({route}) => ({title: route.params.exercise.name})}
-      />
+      <Stack.Screen name="exercDetail" component={ExerciseDetailScreen} />
       <Stack.Screen
         name="routineCreate"
         component={CreateRoutineScreen}

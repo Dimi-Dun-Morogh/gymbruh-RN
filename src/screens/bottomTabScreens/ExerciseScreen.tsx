@@ -26,7 +26,7 @@ const ExercisesScreen = () => {
               name={item.name}
               date={item.lastDate}
               onPress={() =>
-                navigation.navigate('exercDetail', {exercise: item})
+                navigation.navigate('exercDetail', {exerciseId: item.id})
               }
             />
           )}

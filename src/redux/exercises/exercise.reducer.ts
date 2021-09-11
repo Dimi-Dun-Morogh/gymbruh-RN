@@ -34,6 +34,24 @@ const exerciseReducer = (
           ),
         },
       };
+    case exerciseActionTypes.EDIT_EXERCISE:
+      return {
+        ...state,
+        exercises: {
+          ...state.exercises,
+          [action.payload?.id!]: action.payload!,
+        },
+      };
+
+    case exerciseActionTypes.DELETE_EXERCISE:
+      return {
+        ...state,
+        exercises: Object.fromEntries(
+          Object.entries({...state.exercises}).filter(
+            ([id]) => id !== action.payload,
+          ),
+        ),
+      };
     default:
       return state;
   }

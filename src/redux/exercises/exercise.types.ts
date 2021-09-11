@@ -4,6 +4,8 @@ import {WorkOutSet} from '../workout/workout.types';
 export enum exerciseActionTypes {
   CREATE_EXERCISE = 'CREATE_EXERCISE',
   UPDATE_EXERCISE = 'UPDATE_EXERCISE',
+  EDIT_EXERCISE = 'EDIT_EXERCISE',
+  DELETE_EXERCISE = 'DELETE_EXERCISE',
 }
 
 export type Exercise = {
@@ -27,5 +29,11 @@ export type Exercise = {
 
 type CreateExercise = IAction<exerciseActionTypes.CREATE_EXERCISE, Exercise>;
 type UpdateExercise = IAction<exerciseActionTypes.UPDATE_EXERCISE, WorkOutSet>;
+type EditExercise = IAction<exerciseActionTypes.EDIT_EXERCISE, Exercise>;
+type DeleteExercise = IAction<exerciseActionTypes.DELETE_EXERCISE, string>;
 
-export type ExerciseActions = CreateExercise | UpdateExercise;
+export type ExerciseActions =
+  | CreateExercise
+  | UpdateExercise
+  | EditExercise
+  | DeleteExercise;

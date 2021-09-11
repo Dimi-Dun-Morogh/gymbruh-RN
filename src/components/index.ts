@@ -12,3 +12,4 @@ export * from './workout/WorkOutSetInput';
 export * from './workout/WorkOutSetHistoryItem';
 export * from './history/HistoryList';
 export * from './history/HistoryListItem';
+export * from './common/Modal';

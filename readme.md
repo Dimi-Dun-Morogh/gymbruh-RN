@@ -5,7 +5,8 @@
 - [x] detailed exerciseItem Screen ✅ (6.09.2021)
 - [x] workout  creation screen/state/logic ✅ (7.09.2021)
 - [x] delete workout ✅ (10.09.2021)
-- [ ] edit/delete exercise
+- [x] edit/delete exercise  ✅ (11.09.2021)
+- [x] create some modal component  ✅(11.09.2021)
 - [ ] more details on RoutineDetailsScreen
 - [x] history screen/state/logic ✅ (10.09.2021)
 - [x] workout sesh screen/state/logic ✅ (9.09.2021)

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {TextBlock} from '../../components/';
+import {TextBlock, IconButton as HeaderButton} from '../../components/';
+import {useAppSelector} from '../../hooks/storeHooks';
 import {exercDetailScreenProp} from '../../types/routingTypes';
 
-const ExerciseDetailScreen = ({route}: exercDetailScreenProp) => {
+const ExerciseDetailScreen = ({route, navigation}: exercDetailScreenProp) => {
+  const id = route.params!.exerciseId;
+  const exercise = useAppSelector(state => state.exercisesState.exercises[id]);
   const {
     allSets,
     lastDate,
@@ -12,7 +15,26 @@ const ExerciseDetailScreen = ({route}: exercDetailScreenProp) => {
     name,
     recordReps,
     recordWeight,
-  } = route.params!.exercise;
+  } = exercise;
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: name,
+      headerRight: () => {
+        return (
+          <HeaderButton
+            size={35}
+            iconName="edit"
+            onPress={() =>
+              navigation.navigate('exercCreate', {
+                exercise: exercise,
+              })
+            }
+          />
+        );
+      },
+    });
+  }, [navigation, name, exercise]);
 
   return (
     <View style={styles.container}>

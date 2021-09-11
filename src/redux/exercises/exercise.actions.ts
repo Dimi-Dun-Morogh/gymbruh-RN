@@ -34,3 +34,17 @@ export const updateExercise = (set: WorkOutSet) => {
     payload: set,
   };
 };
+
+export const editExercise = (exercise: Exercise) => {
+  return {
+    type: exerciseActionTypes.EDIT_EXERCISE,
+    payload: exercise,
+  };
+};
+
+export const deleteExercise = (id: string) => {
+  return {
+    type: exerciseActionTypes.DELETE_EXERCISE,
+    payload: id,
+  };
+};
