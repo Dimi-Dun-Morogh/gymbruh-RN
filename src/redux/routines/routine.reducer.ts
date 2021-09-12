@@ -14,6 +14,7 @@ const RoutineReducer: Reducer<InitialRoutineState, RoutineActions> = (
 ) => {
   switch (action.type) {
     case routineActionTypes.CREATE_ROUTINE:
+    case routineActionTypes.EDIT_ROUTINE:
       return {
         ...state,
         routines: {

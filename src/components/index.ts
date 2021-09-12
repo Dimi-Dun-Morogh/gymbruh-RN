@@ -13,3 +13,4 @@ export * from './workout/WorkOutSetHistoryItem';
 export * from './history/HistoryList';
 export * from './history/HistoryListItem';
 export * from './common/Modal';
+export * from './history/HistoryPreview';

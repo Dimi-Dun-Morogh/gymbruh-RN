@@ -9,6 +9,7 @@ import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {NavProp} from '../../types/routingTypes';
 import {addHistory} from '../../redux/history/history.actions';
+import {updateRoutine} from '../../redux/routines/routine.actions';
 
 const WorkOutScreen = () => {
   const routines = useAppSelector(state => state.routinesState.routines);
@@ -41,6 +42,10 @@ const WorkOutScreen = () => {
         selectedRoutine ? selectedRoutine.name : '',
       ),
     );
+    if (selectedRoutine) {
+      dispatch(updateRoutine(selectedRoutine));
+    }
+
     navigation.goBack();
   };
 

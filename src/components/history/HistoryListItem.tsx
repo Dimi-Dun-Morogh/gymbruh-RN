@@ -5,15 +5,48 @@ import {WorkOutSet} from '../../redux/workout/workout.types';
 type Props = {
   set: WorkOutSet;
   number: number;
+  preview?: boolean;
 };
 
-const HistoryListItem = ({set, number}: Props) => {
+const HistoryListItem = ({set, number, preview}: Props) => {
   const {exerciseName, date, reps, weight} = set;
+
+  const styles = StyleSheet.create({
+    containerStyle: {
+      backgroundColor: '#000',
+      padding: 15,
+      borderColor: 'green',
+      borderWidth: 1,
+      borderRadius: 15,
+      marginBottom: 10,
+    },
+    textStyle: {
+      color: 'yellow',
+      fontSize: preview ? 15 : 25,
+    },
+    textStyleReps: {
+      color: '#01F814',
+      fontSize: preview ? 15 : 25,
+    },
+    textNameStyle: {
+      textTransform: 'uppercase',
+      color: '#fff',
+      fontSize: preview ? 15 : 25,
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
+    crossLine: {
+      borderStyle: 'solid',
+      borderBottomWidth: 1,
+      borderColor: 'green',
+      paddingTop: 10,
+    },
+  });
 
   return (
     <View style={styles.containerStyle}>
       <Text style={styles.textStyle}>
-        #{number + 1}
+        #{number}
         {'    '}
         {new Date(date).toLocaleString()}
       </Text>
@@ -27,37 +60,5 @@ const HistoryListItem = ({set, number}: Props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  containerStyle: {
-    backgroundColor: '#000',
-    padding: 15,
-    borderColor: 'green',
-    borderWidth: 1,
-    borderRadius: 15,
-    marginBottom: 10,
-  },
-  textStyle: {
-    color: 'yellow',
-    fontSize: 25,
-  },
-  textStyleReps: {
-    color: '#01F814',
-    fontSize: 25,
-  },
-  textNameStyle: {
-    textTransform: 'uppercase',
-    color: '#fff',
-    fontSize: 25,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  crossLine: {
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
-    borderColor: 'green',
-    paddingTop: 10,
-  },
-});
 
 export {HistoryListItem};

@@ -9,7 +9,7 @@ import {useAppSelector} from '../../hooks/storeHooks';
 const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
   const {id} = route.params!.routine;
   const exerciseState = useAppSelector(state => state.exercisesState.exercises);
-  const {name, exercises} = useAppSelector(
+  const {name, exercises, allCount, lastDate} = useAppSelector(
     state => state.routinesState.routines[id],
   );
   const navigation = useNavigation<NavProp>();
@@ -29,7 +29,9 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
           <ExerciseListItem
             name={item.name}
             date={item?.lastDate}
-            onPress={() => navigation.navigate('exercDetail', {exercise: item})}
+            onPress={() =>
+              navigation.navigate('exercDetail', {exerciseId: item.id})
+            }
           />
         )}
       />
@@ -49,6 +51,11 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
   return (
     <View>
       <TextBlock>{name}</TextBlock>
+      <TextBlock>Выполнено раз - {allCount}</TextBlock>
+      <TextBlock>
+        Дата последнего выполнения -{' '}
+        {lastDate ? new Date().toLocaleDateString() : '-'}
+      </TextBlock>
       {renderExercises()}
     </View>
   );

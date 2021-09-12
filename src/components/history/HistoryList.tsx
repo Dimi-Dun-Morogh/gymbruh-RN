@@ -5,9 +5,10 @@ import {WorkOutSet} from '../../redux/workout/workout.types';
 
 type Props = {
   historyItems: WorkOutSet[];
+  preview?: boolean;
 };
 
-const HistoryList = ({historyItems}: Props) => {
+const HistoryList = ({historyItems, preview}: Props) => {
   if (!historyItems.length) {
     return null;
   }
@@ -15,17 +16,30 @@ const HistoryList = ({historyItems}: Props) => {
     <FlatList
       data={historyItems}
       contentContainerStyle={styles.contentContainerStyle}
-      renderItem={({item, index}) => (
-        <HistoryListItem set={item} number={index} />
-      )}
+      renderItem={({item, index}) => {
+        if (preview && index < 2) {
+          return (
+            <HistoryListItem
+              set={item}
+              number={historyItems.length - (index + 1)}
+              preview
+            />
+          );
+        } else if (!preview) {
+          return (
+            <HistoryListItem set={item} number={historyItems.length - index} />
+          );
+        } else {
+          return null;
+        }
+      }}
     />
   );
 };
 
 const styles = StyleSheet.create({
   contentContainerStyle: {
-    flexDirection: 'column-reverse',
-    paddingBottom: 10,
+    // flexDirection: 'column-reverse',
   },
 });
 

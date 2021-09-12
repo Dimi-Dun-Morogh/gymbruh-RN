@@ -14,6 +14,7 @@ import {Exercise} from '../../redux/exercises/exercise.types';
 import {
   createRoutine,
   deleteRoutine,
+  editRoutine,
 } from '../../redux/routines/routine.actions';
 import {routineCreateScreenProp, NavPropsTabs} from '../../types/routingTypes';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
@@ -31,7 +32,12 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const onSubmit = () => {
     if (id) {
       //updating
-      dispatch(createRoutine(name, [...selectedExerc], id));
+      dispatch(
+        editRoutine({
+          ...route.params?.routine!,
+          name,
+        }),
+      );
     } else {
       dispatch(createRoutine(name, [...selectedExerc]));
     }

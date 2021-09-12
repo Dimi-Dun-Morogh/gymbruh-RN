@@ -1,20 +1,36 @@
 import {generateId} from '../../helpers';
-import {routineActionTypes} from './routine.types';
+import {routineActionTypes, Routine} from './routine.types';
 
-export const createRoutine = (
-  name: string,
-  exercises: string[],
-  id?: string,
-) => {
+export const createRoutine = (name: string, exercises: string[]) => {
   const newRoutine = {
-    id: id || generateId.id(),
+    id: generateId.id(),
     name,
     exercises,
+    allCount: 0,
+    lastDate: 0,
   };
 
   return {
     type: routineActionTypes.CREATE_ROUTINE,
     payload: newRoutine,
+  };
+};
+
+export const editRoutine = (routine: Routine) => {
+  return {
+    type: routineActionTypes.EDIT_ROUTINE,
+    payload: routine,
+  };
+};
+
+export const updateRoutine = (routine: Routine) => {
+  return {
+    type: routineActionTypes.EDIT_ROUTINE,
+    payload: {
+      ...routine,
+      allCount: 1 + routine.allCount,
+      lastDate: Number(new Date()),
+    },
   };
 };
 
