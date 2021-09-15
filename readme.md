@@ -13,6 +13,6 @@
 - [x] set async/persist  storage for all data ✅ (10.09.2021)
 - [x] some history preview component ✅(12.09.2021)
 - [ ] fix icons for IOS
-- [ ] create settings screen/store
+- [x] create settings screen/store   ✅(15.09.2021)
 - [ ] localization with i18
 - [ ] dark/light theme

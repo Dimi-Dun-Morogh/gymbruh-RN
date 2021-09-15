@@ -13,6 +13,7 @@ import {
   ExerciseDetailScreen,
   RoutineDetailsScreen,
   WorkOutScreen,
+  SettingsScreen,
 } from './screens';
 import {
   RootStackScreenList,
@@ -40,8 +41,16 @@ const Tabs = () => {
         name="home"
         component={HomeScreen}
         options={{
+          headerRight: () => {
+            return (
+              <HeaderButton
+                iconName="settings"
+                size={35}
+                onPress={() => navigation.navigate('settings')}
+              />
+            );
+          },
           tabBarLabel: 'Домой',
-          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <Icon name="home" color={color} size={size} />
           ),
@@ -145,6 +154,7 @@ const StackNav = () => {
         })}
       />
       <Stack.Screen name="workOut" component={WorkOutScreen} />
+      <Stack.Screen name="settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 };

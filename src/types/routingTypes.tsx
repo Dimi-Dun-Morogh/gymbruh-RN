@@ -21,6 +21,7 @@ export type RootStackScreenList = {
   routineCreate: {routine: Routine} | undefined;
   routineDetails: {routine: Routine};
   workOut: undefined;
+  settings: undefined;
 };
 
 export type NavProp = NativeStackNavigationProp<RootStackScreenList>;
