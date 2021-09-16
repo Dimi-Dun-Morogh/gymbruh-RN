@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes';
 
 type Props = {
   label: string;
@@ -8,6 +10,9 @@ type Props = {
 };
 
 const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
+  const [theme] = useTheme();
+  const styles = style(theme);
+
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.textStyle}>{label}: </Text>
@@ -21,25 +26,26 @@ const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  textStyle: {
-    color: '#fff',
-    fontSize: 24,
-  },
-  inputStyle: {
-    height: 50,
-    width: 55,
-    fontSize: 28,
-    paddingVertical: 1,
-    backgroundColor: '#fff',
-    borderColor: 'green',
-    borderWidth: 3,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 7,
-  },
-});
+const style = (theme: Theme) =>
+  StyleSheet.create({
+    textStyle: {
+      color: theme.textColorMain,
+      fontSize: 24,
+    },
+    inputStyle: {
+      height: 50,
+      width: 55,
+      fontSize: 28,
+      paddingVertical: 1,
+      backgroundColor: '#fff',
+      borderColor: 'green',
+      borderWidth: 3,
+    },
+    inputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 7,
+    },
+  });
 
 export {WorkOutSetInput};

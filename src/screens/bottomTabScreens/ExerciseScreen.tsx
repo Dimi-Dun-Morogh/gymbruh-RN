@@ -1,7 +1,8 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
-import {ExerciseListItem} from '../../components';
+import {View, StyleSheet, FlatList} from 'react-native';
+
+import {ExerciseListItem, TextBlock} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {NavProp} from '../../types/routingTypes';
@@ -13,9 +14,7 @@ const ExercisesScreen = () => {
   const renderExercises = () => {
     const data = Object.values(exercises);
     if (!data.length) {
-      return (
-        <Text style={styles.textStyle}>упражнений нет, нажмите + наверху</Text>
-      );
+      return <TextBlock>упражнений нет, нажмите + наверху</TextBlock>;
     }
     return (
       <View>

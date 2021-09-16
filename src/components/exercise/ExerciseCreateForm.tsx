@@ -33,6 +33,7 @@ const ExerciseCreateForm = ({exercise}: Props) => {
             <HeaderButton
               size={35}
               iconName="delete-forever"
+              color="red"
               onPress={() => setModalVisible(true)}
             />
           );

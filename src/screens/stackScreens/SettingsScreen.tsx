@@ -8,6 +8,8 @@ import {
   setLanguage,
   setWeight,
 } from '../../redux/appSettings/appSettings.actions';
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes';
 
 const SettingsScreen = () => {
   const {
@@ -19,6 +21,9 @@ const SettingsScreen = () => {
   } = useAppSelector(state => state.appSettingsState);
 
   const dispatch = useDispatch();
+
+  const [theme] = useTheme();
+  const styles = style(theme);
 
   const {
     containerStyle,
@@ -49,7 +54,7 @@ const SettingsScreen = () => {
           <Picker
             style={pickerStyle}
             mode="dropdown"
-            dropdownIconColor="#fff"
+            dropdownIconColor={theme.textColorMain}
             selectedValue={currentLanguage}
             onValueChange={value => dispatch(setLanguage(value))}>
             {languages.map(lang => (
@@ -69,7 +74,7 @@ const SettingsScreen = () => {
           <Picker
             style={pickerStyle}
             mode="dropdown"
-            dropdownIconColor="#fff"
+            dropdownIconColor={theme.textColorMain}
             selectedValue={currentWeightPoint}
             onValueChange={value => dispatch(setWeight(value))}>
             {weightPoints.map(weight => (
@@ -87,41 +92,42 @@ const SettingsScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  containerStyle: {
-    backgroundColor: '#000',
-    paddingTop: 40,
-    flex: 1,
-  },
-  settingsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-    paddingBottom: 14,
-    paddingHorizontal: 15,
-    borderBottomWidth: 2,
-    borderColor: 'orange',
-  },
-  textStyle: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  pickerContainer: {
-    borderColor: 'green',
-    borderWidth: 2,
-    borderRadius: 15,
-    overflow: 'hidden',
-  },
-  pickerStyle: {
-    width: 110,
-    backgroundColor: '#000',
-    color: '#fff',
-  },
-  pickerItemStyle: {
-    fontSize: 25,
-  },
-});
+const style = (theme: Theme) =>
+  StyleSheet.create({
+    containerStyle: {
+      backgroundColor: theme.bgcSecondary,
+      paddingTop: 40,
+      flex: 1,
+    },
+    settingsContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 15,
+      paddingBottom: 14,
+      paddingHorizontal: 15,
+      borderBottomWidth: 2,
+      borderColor: 'orange',
+    },
+    textStyle: {
+      color: theme.textColorMain,
+      fontWeight: 'bold',
+      fontSize: 20,
+    },
+    pickerContainer: {
+      borderColor: 'green',
+      borderWidth: 2,
+      borderRadius: 15,
+      overflow: 'hidden',
+    },
+    pickerStyle: {
+      width: 110,
+      backgroundColor: theme.bgcSecondary,
+      color: theme.textColorMain,
+    },
+    pickerItemStyle: {
+      fontSize: 25,
+    },
+  });
 
 export {SettingsScreen};

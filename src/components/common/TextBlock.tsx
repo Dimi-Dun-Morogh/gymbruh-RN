@@ -1,11 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes';
 
 type Props = {
   children: React.ReactChild | React.ReactChild[];
 };
 
 const TextBlock = ({children}: Props) => {
+  const [theme] = useTheme();
+  const styles = style(theme);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{children}</Text>
@@ -13,21 +18,22 @@ const TextBlock = ({children}: Props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'black',
-    padding: 7,
-    paddingBottom: 22,
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
-    borderColor: 'green',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
+const style = (theme: Theme) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor: theme.bgcSecondary,
+      padding: 7,
+      paddingBottom: 22,
+      borderStyle: 'solid',
+      borderBottomWidth: 1,
+      borderColor: 'green',
+    },
+    text: {
+      color: theme.textColorMain,
+      fontSize: 25,
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+  });
 
 export {TextBlock};

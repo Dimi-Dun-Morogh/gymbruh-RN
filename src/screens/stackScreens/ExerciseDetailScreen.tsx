@@ -20,11 +20,12 @@ const ExerciseDetailScreen = ({route, navigation}: exercDetailScreenProp) => {
   useEffect(() => {
     navigation.setOptions({
       title: name,
-      headerRight: () => {
+      headerRight: ({tintColor}) => {
         return (
           <HeaderButton
             size={35}
             iconName="edit"
+            color={tintColor}
             onPress={() =>
               navigation.navigate('exercCreate', {
                 exercise: exercise,

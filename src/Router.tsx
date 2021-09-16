@@ -22,6 +22,8 @@ import {
 } from './types/routingTypes';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {IconButton as HeaderButton} from './components';
+import {Theme} from './themes/';
+import {useTheme} from './hooks/useTheme';
 
 const Stack = createNativeStackNavigator<RootStackScreenList>();
 
@@ -29,14 +31,20 @@ const Tab = createBottomTabNavigator<BottomTabScreenList>();
 
 const Tabs = () => {
   const navigation = useNavigation<NavProp>();
+  const [theme] = useTheme();
+  const tabsAdditional = {
+    tabBarActiveTintColor: '#fff',
+    tabBarActiveBackgroundColor: '#8a63f2',
+    tabBarInactiveTintColor: theme.textColorMain,
+  };
 
   return (
     <Tab.Navigator
       screenOptions={{
-        ...styles,
+        ...styles(theme),
         ...tabsAdditional,
       }}
-      sceneContainerStyle={{backgroundColor: '#2c1338'}}>
+      sceneContainerStyle={{backgroundColor: theme.bgcContent}}>
       <Tab.Screen
         name="home"
         component={HomeScreen}
@@ -46,6 +54,7 @@ const Tabs = () => {
               <HeaderButton
                 iconName="settings"
                 size={35}
+                color={theme.textColorMain}
                 onPress={() => navigation.navigate('settings')}
               />
             );
@@ -66,6 +75,7 @@ const Tabs = () => {
               <HeaderButton
                 iconName="add"
                 size={35}
+                color={theme.textColorMain}
                 onPress={() => navigation.navigate('routineCreate')}
               />
             );
@@ -85,6 +95,7 @@ const Tabs = () => {
             return (
               <HeaderButton
                 size={35}
+                color={theme.textColorMain}
                 iconName="add"
                 onPress={() => navigation.navigate('exercCreate')}
               />
@@ -100,14 +111,16 @@ const Tabs = () => {
 };
 
 const StackNav = () => {
+  const [theme] = useTheme();
+
   return (
     <Stack.Navigator
       screenOptions={{
         contentStyle: {
-          backgroundColor: '#2c1338',
+          backgroundColor: theme.bgcContent,
         },
-        headerTintColor: 'white',
-        ...styles,
+        headerTintColor: styles(theme).headerTitleStyle.color,
+        ...styles(theme),
       }}>
       <Stack.Screen
         name="tabs"
@@ -138,11 +151,12 @@ const StackNav = () => {
         name="routineDetails"
         component={RoutineDetailsScreen}
         options={({route, navigation}) => ({
-          headerRight: () => {
+          headerRight: ({tintColor}) => {
             return (
               <HeaderButton
                 size={35}
                 iconName="edit"
+                color={tintColor}
                 onPress={() =>
                   navigation.navigate('routineCreate', {
                     routine: route.params.routine,
@@ -167,31 +181,25 @@ const Router = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  tabBarStyle: {
-    backgroundColor: 'black',
-  },
-  tabBarLabelStyle: {
-    color: '#ffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  tabBarIconStyle: {
-    color: '#fff',
-  },
-  headerStyle: {
-    backgroundColor: '#8a63f2',
-  },
-  headerTitleStyle: {
-    color: '#ffff',
-  },
-});
-
-const plusStyles = {
-  tabsAdditional: {
-    tabBarActiveTintColor: '#fff',
-    tabBarActiveBackgroundColor: '#8a63f2',
-  },
+const styles = (theme: Theme) => {
+  return StyleSheet.create({
+    tabBarStyle: {
+      backgroundColor: theme.bgcTabs,
+    },
+    tabBarLabelStyle: {
+      fontSize: 16,
+      fontWeight: 'bold',
+    },
+    tabBarIconStyle: {
+      color: theme.textColorMain,
+    },
+    headerStyle: {
+      backgroundColor: theme.bgcMain,
+    },
+    headerTitleStyle: {
+      color: theme.textColorMain,
+    },
+  });
 };
-const {tabsAdditional} = plusStyles;
+
 export default Router;

@@ -1,7 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {IconButton} from '..';
+import {useTheme} from '../../hooks/useTheme';
 import {WorkOutSet} from '../../redux/workout/workout.types';
+import {Theme} from '../../themes';
 
 type Props = {
   set: WorkOutSet;
@@ -14,6 +16,9 @@ const WorkOutSetHistoryItem = ({
   onDelete,
   number,
 }: Props) => {
+  const [theme] = useTheme();
+  const styles = style(theme);
+
   return (
     <View style={styles.containerStyle}>
       <IconButton
@@ -34,23 +39,24 @@ const WorkOutSetHistoryItem = ({
   );
 };
 
-const styles = StyleSheet.create({
-  containerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  textStyle: {
-    color: '#fff',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-  dateStyle: {
-    color: '#fff',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-    marginLeft: 'auto',
-    marginRight: 15,
-  },
-});
+const style = (theme: Theme) =>
+  StyleSheet.create({
+    containerStyle: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    textStyle: {
+      color: theme.textColorMain,
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
+    },
+    dateStyle: {
+      color: theme.textColorMain,
+      textTransform: 'uppercase',
+      fontWeight: 'bold',
+      marginLeft: 'auto',
+      marginRight: 15,
+    },
+  });
 
 export {WorkOutSetHistoryItem};

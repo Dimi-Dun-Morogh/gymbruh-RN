@@ -10,17 +10,19 @@ import {useNavigation} from '@react-navigation/core';
 import {NavProp} from '../../types/routingTypes';
 import {addHistory} from '../../redux/history/history.actions';
 import {updateRoutine} from '../../redux/routines/routine.actions';
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes/';
 
 const WorkOutScreen = () => {
   const routines = useAppSelector(state => state.routinesState.routines);
   const [selectedRoutine, setSelectedRoutine] = useState<null | Routine>(null);
   const [selectedExercises, setSelectedExercises] = useState<string[] | []>([]);
-  const workOutState = useAppSelector(state => state.workOutState);
+  const {sets: workOutSets, routineId} = useAppSelector(
+    state => state.workOutState,
+  );
 
   const dispatch = useDispatch();
   const navigation = useNavigation<NavProp>();
-
-  const {sets: workOutSets, routineId} = workOutState;
 
   const handlePick = (routine: Routine | null) => {
     setSelectedRoutine(routine);
@@ -49,6 +51,9 @@ const WorkOutScreen = () => {
     navigation.goBack();
   };
 
+  const [theme] = useTheme();
+  const styles = style(theme);
+
   const renderRoutines = () => {
     const data = Object.values(routines);
     if (!data.length) {
@@ -59,7 +64,7 @@ const WorkOutScreen = () => {
         <Picker
           style={styles.pickerStyle}
           mode="dropdown"
-          dropdownIconColor="#fff"
+          dropdownIconColor={styles.pickerStyle.color}
           selectedValue={selectedRoutine}
           onValueChange={value => handlePick(value)}>
           <Picker.Item value={null} label="не выбрано" />
@@ -77,7 +82,6 @@ const WorkOutScreen = () => {
 
   return (
     <View style={{flex: 1, paddingBottom: 5}}>
-      <TextBlock>Workout</TextBlock>
       {renderRoutines()}
       <WorkOutExercises exercises={selectedExercises} />
       {workOutSets.length ? (
@@ -87,25 +91,26 @@ const WorkOutScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  pickerWrap: {
-    marginBottom: 26,
-    marginTop: 10,
-    borderRadius: 20,
-    borderColor: 'green',
-    borderWidth: 3,
-    backgroundColor: '#000',
-    height: 75,
-    width: 375,
-    padding: 10,
-    alignSelf: 'center',
-  },
-  pickerStyle: {
-    height: 50,
-    width: 350,
-    backgroundColor: '#000',
-    color: '#fff',
-  },
-});
+const style = (theme: Theme) =>
+  StyleSheet.create({
+    pickerWrap: {
+      marginBottom: 26,
+      marginTop: 10,
+      borderRadius: 20,
+      borderColor: 'green',
+      borderWidth: 3,
+      backgroundColor: theme.bgcSecondary,
+      height: 75,
+      width: 375,
+      padding: 10,
+      alignSelf: 'center',
+    },
+    pickerStyle: {
+      height: 50,
+      width: 350,
+      backgroundColor: theme.bgcSecondary,
+      color: theme.textColorMain,
+    },
+  });
 
 export {WorkOutScreen};

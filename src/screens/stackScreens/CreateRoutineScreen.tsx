@@ -70,6 +70,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
                 <HeaderButton
                   size={35}
                   iconName="delete-forever"
+                  color="red"
                   onPress={() => setModalVisible(true)}
                 />
               );

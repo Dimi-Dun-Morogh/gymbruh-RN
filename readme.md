@@ -15,4 +15,4 @@
 - [ ] fix icons for IOS
 - [x] create settings screen/store   ✅(15.09.2021)
 - [ ] localization with i18
-- [ ] dark/light theme
+- [x] dark/light theme  ✅(16.09.2021)
