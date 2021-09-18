@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, StyleSheet, FlatList} from 'react-native';
 
 import {ExerciseListItem, TextBlock} from '../../components';
@@ -10,11 +11,12 @@ import {NavProp} from '../../types/routingTypes';
 const ExercisesScreen = () => {
   const navigation = useNavigation<NavProp>();
   const exercises = useAppSelector(state => state.exercisesState.exercises);
+  const {t} = useTranslation();
 
   const renderExercises = () => {
     const data = Object.values(exercises);
     if (!data.length) {
-      return <TextBlock>упражнений нет, нажмите + наверху</TextBlock>;
+      return <TextBlock>{t('no exercises, press + on top')}</TextBlock>;
     }
     return (
       <View>

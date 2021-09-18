@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal as RnModal, StyleSheet, View, Text} from 'react-native';
 import {Button} from '../';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useTranslation} from 'react-i18next';
 
 type Props = {
   visible: boolean;
@@ -10,16 +11,20 @@ type Props = {
 };
 
 const Modal = ({visible, onSuccess, onDecline}: Props) => {
+  const {t} = useTranslation();
   return (
     <RnModal visible={visible} animationType="slide" transparent>
       <View style={styles.containerStyle}>
         <View style={styles.contentContainerStyle}>
-          <Text style={styles.textStyle}> Are you sure to delete ? </Text>
+          <Text style={styles.textStyle}>
+            {' '}
+            {t('Are you sure to delete')} ?{' '}
+          </Text>
           <View style={styles.buttonsContainerStyle}>
-            <Button onPress={onDecline}>
+            <Button onPress={onDecline} bgColor="red" color="#fff">
               <Icon name="close" size={33} />
             </Button>
-            <Button onPress={onSuccess}>
+            <Button onPress={onSuccess} bgColor="green" color="#fff">
               <Icon name="check" size={33} />
             </Button>
           </View>

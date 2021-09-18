@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
 import {TextBlock, IconButton as HeaderButton} from '../../components/';
 import {useAppSelector} from '../../hooks/storeHooks';
@@ -16,6 +17,7 @@ const ExerciseDetailScreen = ({route, navigation}: exercDetailScreenProp) => {
     recordReps,
     recordWeight,
   } = exercise;
+  const {t} = useTranslation();
 
   useEffect(() => {
     navigation.setOptions({
@@ -40,19 +42,25 @@ const ExerciseDetailScreen = ({route, navigation}: exercDetailScreenProp) => {
   return (
     <View style={styles.container}>
       <TextBlock>{name}</TextBlock>
-      <TextBlock>количество всех подходов: {allSets || '-'}</TextBlock>
-      <TextBlock>последнее выполнение: {lastDate || '-'} </TextBlock>
       <TextBlock>
-        последний подход:{'\n'} повторений - {lastReps} вес -{' '}
+        {t('amount of all sets')}: {allSets || '-'}
+      </TextBlock>
+      <TextBlock>
+        {t('last time done')}: {lastDate || '-'}{' '}
+      </TextBlock>
+      <TextBlock>
+        {t('last set')}:{'\n'} {t('reps')} - {lastReps} {t('weight')} -{' '}
         {lastWeight || '-'}
       </TextBlock>
       <TextBlock>
-        рекорд повторений:{'\n'} повторений - {recordReps.reps} вес -
-        {recordReps.weight || '-'} {'\n'}дата - {recordReps.date || '-'}
+        {t('record reps')}:{'\n'} {t('reps')} - {recordReps.reps} {t('weight')}{' '}
+        -{recordReps.weight || '-'} {'\n'}
+        {t('date')} - {recordReps.date || '-'}
       </TextBlock>
       <TextBlock>
-        рекорд веса:{'\n'} вес - {recordWeight.weight} повторений -{' '}
-        {recordWeight.reps} {'\n'}дата - {recordWeight.date || '-'}
+        {t('record weight')}:{'\n'} {t('weight')} - {recordWeight.weight}{' '}
+        {t('reps')} - {recordWeight.reps} {'\n'}
+        {t('date')} - {recordWeight.date || '-'}
       </TextBlock>
     </View>
   );

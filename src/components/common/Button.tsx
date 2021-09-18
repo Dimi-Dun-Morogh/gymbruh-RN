@@ -1,20 +1,30 @@
-import React, {ReactChild} from 'react';
+import React, {ReactNode} from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Theme, themePicker} from '../../themes/';
 
 type ButtonProps = {
-  children: ReactChild;
+  children: ReactNode;
   onPress: () => void;
+  color?: string;
+  bgColor?: string;
 };
 
-const Button = ({children, onPress}: ButtonProps) => {
+const Button = ({children, onPress, color, bgColor}: ButtonProps) => {
   const darkTheme = useAppSelector(state => state.appSettingsState.darkTheme);
   const theme = themePicker(darkTheme);
   const styles = style(theme);
   return (
-    <TouchableOpacity style={styles.buttonStyle} onPress={onPress}>
-      <Text style={styles.textStyle}>{children}</Text>
+    <TouchableOpacity
+      style={
+        bgColor
+          ? {...styles.buttonStyle, backgroundColor: bgColor}
+          : styles.buttonStyle
+      }
+      onPress={onPress}>
+      <Text style={color ? {...styles.textStyle, color} : styles.textStyle}>
+        {children}
+      </Text>
     </TouchableOpacity>
   );
 };

@@ -18,6 +18,7 @@ import {
 } from '../../redux/routines/routine.actions';
 import {routineCreateScreenProp, NavPropsTabs} from '../../types/routingTypes';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const [name, setName] = useState('');
@@ -28,6 +29,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const dispatch = useDispatch();
   const navigation = useNavigation<NavPropsTabs>();
   const exercises = useAppSelector(state => state.exercisesState.exercises);
+  const {t} = useTranslation();
 
   const onSubmit = () => {
     if (id) {
@@ -84,10 +86,11 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   );
 
   const renderExercises = () => {
-    if (!exercises) {
-      return <TextBlock>упражнений нет, нажмите + наверху</TextBlock>;
-    }
     const data = Object.values(exercises);
+    if (!data.length) {
+      return <TextBlock>{t('no exercises, press + on top')}</TextBlock>;
+    }
+
     return (
       <View style={{marginBottom: 25}}>
         <FlatList
@@ -121,9 +124,9 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
         onSuccess={() => handleDeletion()}
       />
       <Input
-        label="enter name"
+        label={t('enter name')}
         value={name}
-        placeholder="dips"
+        placeholder={t('legs day')}
         onChangeText={setName}
       />
       {renderExercises()}

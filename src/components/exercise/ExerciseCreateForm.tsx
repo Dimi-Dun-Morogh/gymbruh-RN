@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {
@@ -21,6 +22,7 @@ const ExerciseCreateForm = ({exercise}: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const navigation = useNavigation<NavProp>();
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (exercise) {
@@ -70,12 +72,10 @@ const ExerciseCreateForm = ({exercise}: Props) => {
       <Input
         value={exerName}
         onChangeText={text => setExercName(text)}
-        placeholder="жим лёжа"
-        label="название упражнения"
+        placeholder={t('bench press')}
+        label={t('exercise name')}
       />
-      <Button onPress={onSubmit}>
-        {exercise ? 'редактировать' : 'создать'}
-      </Button>
+      <Button onPress={onSubmit}>{exercise ? t('edit') : t('create')}</Button>
     </View>
   );
 };

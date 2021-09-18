@@ -4,7 +4,7 @@ import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes';
 
 type Props = {
-  children: React.ReactChild | React.ReactChild[];
+  children: React.ReactNode;
 };
 
 const TextBlock = ({children}: Props) => {

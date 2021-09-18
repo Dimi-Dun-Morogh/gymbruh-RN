@@ -14,5 +14,9 @@
 - [x] some history preview component ✅(12.09.2021)
 - [ ] fix icons for IOS
 - [x] create settings screen/store   ✅(15.09.2021)
-- [ ] localization with i18
+- [x] localization with i18   ✅(18.09.2021)
 - [x] dark/light theme  ✅(16.09.2021)
+- [ ] some chart for history component
+- [ ] fix Date.toLocale string locale 
+
+

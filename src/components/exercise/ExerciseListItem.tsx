@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {themePicker, Theme} from '../../themes';
@@ -15,6 +16,7 @@ const ExerciseListItem = ({name, date, onPress, selected}: Props) => {
   const theme = themePicker(isDarkTheme);
   const styles = style(theme);
   const selectedStyles = selectedStyle(theme);
+  const {t} = useTranslation();
 
   const isSelected = () => {
     if (selected) {
@@ -29,7 +31,7 @@ const ExerciseListItem = ({name, date, onPress, selected}: Props) => {
       <Text style={isSelected().textName}>{name}</Text>
       <View style={isSelected().crossLine} />
       <Text style={isSelected().textDate}>
-        последний раз - {date ? date : 'еще не делал'}
+        {t('last time done')} - {date ? date : t("haven't done yet")}
       </Text>
     </TouchableOpacity>
   );

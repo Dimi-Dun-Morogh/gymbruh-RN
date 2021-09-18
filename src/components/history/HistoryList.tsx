@@ -21,7 +21,7 @@ const HistoryList = ({historyItems, preview}: Props) => {
           return (
             <HistoryListItem
               set={item}
-              number={historyItems.length - (index + 1)}
+              number={historyItems.length - index}
               preview
             />
           );

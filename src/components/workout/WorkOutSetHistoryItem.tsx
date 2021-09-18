@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, Text, StyleSheet} from 'react-native';
 import {IconButton} from '..';
 import {useTheme} from '../../hooks/useTheme';
@@ -18,7 +19,7 @@ const WorkOutSetHistoryItem = ({
 }: Props) => {
   const [theme] = useTheme();
   const styles = style(theme);
-
+  const {t} = useTranslation();
   return (
     <View style={styles.containerStyle}>
       <IconButton
@@ -30,7 +31,7 @@ const WorkOutSetHistoryItem = ({
 
       <Text style={styles.textStyle}>
         {' '}
-        {number})повторений - {reps} вес - {weight}
+        {number}){t('reps')} - {reps} {t('weight')} - {weight}
       </Text>
       <Text style={styles.dateStyle}>
         {new Date(date).toLocaleTimeString()}

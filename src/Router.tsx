@@ -24,6 +24,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {IconButton as HeaderButton} from './components';
 import {Theme} from './themes/';
 import {useTheme} from './hooks/useTheme';
+import {useTranslation} from 'react-i18next';
+import i18n from './locales/';
+
+const initI18n = i18n;
 
 const Stack = createNativeStackNavigator<RootStackScreenList>();
 
@@ -37,6 +41,7 @@ const Tabs = () => {
     tabBarActiveBackgroundColor: '#8a63f2',
     tabBarInactiveTintColor: theme.textColorMain,
   };
+  const {t} = useTranslation();
 
   return (
     <Tab.Navigator
@@ -49,6 +54,7 @@ const Tabs = () => {
         name="home"
         component={HomeScreen}
         options={{
+          title: 'gymbruh',
           headerRight: () => {
             return (
               <HeaderButton
@@ -59,7 +65,7 @@ const Tabs = () => {
               />
             );
           },
-          tabBarLabel: 'Домой',
+          tabBarLabel: t('home'),
           tabBarIcon: ({color, size}) => (
             <Icon name="home" color={color} size={size} />
           ),
@@ -69,7 +75,8 @@ const Tabs = () => {
         name="routine"
         component={RoutineScreen}
         options={{
-          tabBarLabel: 'Программы',
+          title: t('routines'),
+          tabBarLabel: t('routines'),
           headerRight: () => {
             return (
               <HeaderButton
@@ -89,8 +96,8 @@ const Tabs = () => {
         name="exercises"
         component={ExercisesScreen}
         options={{
-          title: 'упражнения',
-          tabBarLabel: 'Упражнения',
+          title: t('exercises'),
+          tabBarLabel: t('exercises'),
           headerRight: () => {
             return (
               <HeaderButton
@@ -112,7 +119,7 @@ const Tabs = () => {
 
 const StackNav = () => {
   const [theme] = useTheme();
-
+  const {t} = useTranslation();
   return (
     <Stack.Navigator
       screenOptions={{
@@ -129,14 +136,14 @@ const StackNav = () => {
       />
       <Stack.Screen
         name="history"
-        options={{title: 'история'}}
+        options={{title: t('history')}}
         component={HistoryScreen}
       />
       <Stack.Screen
         name="exercCreate"
         component={CreateExerciseScreen}
         options={{
-          title: 'создать упражнение',
+          title: t('create exercise'),
         }}
       />
       <Stack.Screen name="exercDetail" component={ExerciseDetailScreen} />
@@ -144,7 +151,7 @@ const StackNav = () => {
         name="routineCreate"
         component={CreateRoutineScreen}
         options={({route}) => ({
-          title: route.params?.routine.name || 'создать программу',
+          title: route.params?.routine.name || t('create routine'),
         })}
       />
       <Stack.Screen
@@ -167,8 +174,20 @@ const StackNav = () => {
           },
         })}
       />
-      <Stack.Screen name="workOut" component={WorkOutScreen} />
-      <Stack.Screen name="settings" component={SettingsScreen} />
+      <Stack.Screen
+        name="workOut"
+        options={{
+          title: t('workout'),
+        }}
+        component={WorkOutScreen}
+      />
+      <Stack.Screen
+        name="settings"
+        options={{
+          title: t('settings'),
+        }}
+        component={SettingsScreen}
+      />
     </Stack.Navigator>
   );
 };

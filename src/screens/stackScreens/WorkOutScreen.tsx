@@ -12,6 +12,7 @@ import {addHistory} from '../../redux/history/history.actions';
 import {updateRoutine} from '../../redux/routines/routine.actions';
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes/';
+import {useTranslation} from 'react-i18next';
 
 const WorkOutScreen = () => {
   const routines = useAppSelector(state => state.routinesState.routines);
@@ -53,11 +54,12 @@ const WorkOutScreen = () => {
 
   const [theme] = useTheme();
   const styles = style(theme);
+  const {t} = useTranslation();
 
   const renderRoutines = () => {
     const data = Object.values(routines);
     if (!data.length) {
-      return <TextBlock>Программ еще не создали</TextBlock>;
+      return <TextBlock>{t('No routines created')}</TextBlock>;
     }
     return (
       <View style={styles.pickerWrap}>
@@ -67,7 +69,7 @@ const WorkOutScreen = () => {
           dropdownIconColor={styles.pickerStyle.color}
           selectedValue={selectedRoutine}
           onValueChange={value => handlePick(value)}>
-          <Picker.Item value={null} label="не выбрано" />
+          <Picker.Item value={null} label={t('not chosen')} />
           {data.map(routine => (
             <Picker.Item
               label={routine.name}
@@ -85,7 +87,7 @@ const WorkOutScreen = () => {
       {renderRoutines()}
       <WorkOutExercises exercises={selectedExercises} />
       {workOutSets.length ? (
-        <Button onPress={handleFinish}>Завершить тренировку</Button>
+        <Button onPress={handleFinish}>{t('End workout')}</Button>
       ) : null}
     </View>
   );

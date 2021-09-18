@@ -1,5 +1,7 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Text, StyleSheet, View} from 'react-native';
+import {useAppSelector} from '../../hooks/storeHooks';
 import {useTheme} from '../../hooks/useTheme';
 import {WorkOutSet} from '../../redux/workout/workout.types';
 import {Theme} from '../../themes/';
@@ -13,6 +15,10 @@ type Props = {
 const HistoryListItem = ({set, number, preview}: Props) => {
   const {exerciseName, date, reps, weight} = set;
 
+  const weightPoint = useAppSelector(
+    state => state.appSettingsState.currentWeightPoint,
+  );
+  const {t} = useTranslation();
   const [theme] = useTheme();
   const styles = style(theme, preview);
 
@@ -27,8 +33,8 @@ const HistoryListItem = ({set, number, preview}: Props) => {
       <Text style={styles.textNameStyle}>{exerciseName}</Text>
       <View style={styles.crossLine} />
       <Text style={styles.textStyleReps}>
-        повторений - {reps}
-        {'    '} {weight ? `вес - ${weight}кг` : null}
+        {t('reps')} - {reps}
+        {'    '} {weight ? `${t('weight')} - ${weight} ${weightPoint}` : null}
       </Text>
     </View>
   );

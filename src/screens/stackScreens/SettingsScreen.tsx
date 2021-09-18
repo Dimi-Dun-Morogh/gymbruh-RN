@@ -10,6 +10,7 @@ import {
 } from '../../redux/appSettings/appSettings.actions';
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes';
+import {useTranslation} from 'react-i18next';
 
 const SettingsScreen = () => {
   const {
@@ -21,7 +22,7 @@ const SettingsScreen = () => {
   } = useAppSelector(state => state.appSettingsState);
 
   const dispatch = useDispatch();
-
+  const {t} = useTranslation();
   const [theme] = useTheme();
   const styles = style(theme);
 
@@ -37,7 +38,7 @@ const SettingsScreen = () => {
   return (
     <View style={containerStyle}>
       <View style={settingsContainer}>
-        <Text style={textStyle}>Темная тема</Text>
+        <Text style={textStyle}>{t('dark theme')}</Text>
         <Switch
           trackColor={{false: '#767577', true: 'green'}}
           thumbColor={darkTheme ? 'orange' : '#f4f3f4'}
@@ -49,7 +50,7 @@ const SettingsScreen = () => {
         />
       </View>
       <View style={settingsContainer}>
-        <Text style={textStyle}>Язык</Text>
+        <Text style={textStyle}>{t('language')}</Text>
         <View style={pickerContainer}>
           <Picker
             style={pickerStyle}
@@ -69,7 +70,7 @@ const SettingsScreen = () => {
         </View>
       </View>
       <View style={settingsContainer}>
-        <Text style={textStyle}>Единицы измерения:</Text>
+        <Text style={textStyle}>{t('units of measurement')}:</Text>
         <View style={pickerContainer}>
           <Picker
             style={pickerStyle}

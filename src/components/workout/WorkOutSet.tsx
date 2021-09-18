@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
 import {IconButton, WorkOutSetInput} from '../';
 
@@ -9,15 +10,16 @@ type Props = {
 const WorkOutSet = ({onSetSubmit}: Props) => {
   const [reps, setReps] = useState('');
   const [weight, setWeight] = useState('');
+  const {t} = useTranslation();
 
   return (
     <View style={styles.containerStyle}>
+      <WorkOutSetInput label={t('reps')} value={reps} onValueChange={setReps} />
       <WorkOutSetInput
-        label="Повторений"
-        value={reps}
-        onValueChange={setReps}
+        label={t('weight')}
+        value={weight}
+        onValueChange={setWeight}
       />
-      <WorkOutSetInput label="Вес" value={weight} onValueChange={setWeight} />
 
       <IconButton
         iconName="check-circle"
