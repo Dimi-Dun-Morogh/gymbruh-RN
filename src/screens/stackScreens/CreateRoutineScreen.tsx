@@ -38,6 +38,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
         editRoutine({
           ...route.params?.routine!,
           name,
+          exercises: [...selectedExerc],
         }),
       );
     } else {

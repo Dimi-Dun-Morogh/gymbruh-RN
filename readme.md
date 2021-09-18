@@ -16,7 +16,7 @@
 - [x] create settings screen/store   ✅(15.09.2021)
 - [x] localization with i18   ✅(18.09.2021)
 - [x] dark/light theme  ✅(16.09.2021)
-- [ ] some chart for history component
-- [ ] fix Date.toLocale string locale 
+- [x] some chart for history component   ✅(18.09.2021)
+- [ ] fix Date.toLocale string locale
 
 

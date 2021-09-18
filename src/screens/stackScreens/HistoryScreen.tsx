@@ -13,7 +13,7 @@ const HistoryScreen = () => {
     .reverse();
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <HistoryList historyItems={historyExerc} />
     </View>
   );

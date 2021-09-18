@@ -1,6 +1,8 @@
 import {appSettingsActionTypes} from './appSettings.types';
+import i18n from '../../locales';
 
 export const setLanguage = (lang: string) => {
+  i18n.changeLanguage(lang);
   return {
     type: appSettingsActionTypes.SET_LANGUAGE,
     payload: lang,

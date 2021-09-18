@@ -1,26 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 
 import {Button, HistoryPreview} from '../../components';
-import {useAppSelector} from '../../hooks/storeHooks';
+
 import {NavProp} from '../../types/routingTypes';
 
-import i18n from '../../locales/';
 import {useTranslation} from 'react-i18next';
 
 const HomeScreen = () => {
   const navigation = useNavigation<NavProp>();
-  const language = useAppSelector(
-    state => state.appSettingsState.currentLanguage,
-  );
 
   const {t} = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [language]);
 
   return (
     <View

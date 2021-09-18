@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
-import {HistoryListItem} from '..';
+import {HistoryListItem, HistoryPieChart} from '..';
 import {WorkOutSet} from '../../redux/workout/workout.types';
 
 type Props = {
@@ -14,6 +14,7 @@ const HistoryList = ({historyItems, preview}: Props) => {
   }
   return (
     <FlatList
+      ListHeaderComponent={preview ? null : HistoryPieChart}
       data={historyItems}
       contentContainerStyle={styles.contentContainerStyle}
       renderItem={({item, index}) => {
