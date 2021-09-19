@@ -11,7 +11,7 @@ export type Routine = {
   name: string;
   exercises: string[];
   allCount: number;
-  lastDate: number;
+  lastDate: string;
 };
 
 type CreateRoutine = IAction<routineActionTypes.CREATE_ROUTINE, Routine>;

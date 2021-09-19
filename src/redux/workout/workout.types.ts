@@ -5,7 +5,7 @@ export type WorkOutSet = {
   weight: number;
   id: string;
   exerciseId: string;
-  date: number;
+  date: string;
   exerciseName: string;
 };
 

@@ -33,9 +33,7 @@ const WorkOutSetHistoryItem = ({
         {' '}
         {number}){t('reps')} - {reps} {t('weight')} - {weight}
       </Text>
-      <Text style={styles.dateStyle}>
-        {new Date(date).toLocaleTimeString()}
-      </Text>
+      <Text style={styles.dateStyle}>{date}</Text>
     </View>
   );
 };

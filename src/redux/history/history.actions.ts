@@ -1,3 +1,4 @@
+import {format} from 'date-fns';
 import {generateId} from '../../helpers';
 import {WorkOutSet} from '../workout/workout.types';
 import {HistoryActionTypes} from './history.types';
@@ -13,7 +14,7 @@ export const addHistory = (
       routineId,
       sets,
       routineName,
-      date: Number(new Date()),
+      date: format(new Date(), 'MM/dd/yyyy H:mm '),
       id: generateId.id(),
     },
   };

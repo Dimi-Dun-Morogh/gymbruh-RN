@@ -1,3 +1,4 @@
+import {format} from 'date-fns';
 import {generateId} from '../../helpers';
 import {routineActionTypes, Routine} from './routine.types';
 
@@ -29,7 +30,7 @@ export const updateRoutine = (routine: Routine) => {
     payload: {
       ...routine,
       allCount: 1 + routine.allCount,
-      lastDate: Number(new Date()),
+      lastDate: format(new Date(), 'MM/dd/yyyy H:mm '),
     },
   };
 };

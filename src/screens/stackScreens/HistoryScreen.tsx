@@ -11,6 +11,7 @@ const HistoryScreen = () => {
       return [...acc, ...item.sets];
     }, [] as WorkOutSet[])
     .reverse();
+  console.log(history.length);
 
   return (
     <View style={{flex: 1}}>

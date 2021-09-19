@@ -6,13 +6,14 @@ import {TextBlock, WorkOutExercises, Button} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Routine} from '../../redux/routines/routine.types';
 import {useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/core';
+import {useFocusEffect, useNavigation} from '@react-navigation/core';
 import {NavProp} from '../../types/routingTypes';
 import {addHistory} from '../../redux/history/history.actions';
 import {updateRoutine} from '../../redux/routines/routine.actions';
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes/';
 import {useTranslation} from 'react-i18next';
+import {playASound} from '../../helpers';
 
 const WorkOutScreen = () => {
   const routines = useAppSelector(state => state.routinesState.routines);
@@ -50,6 +51,7 @@ const WorkOutScreen = () => {
     }
 
     navigation.goBack();
+    playASound.onWorkOutSubmit();
   };
 
   const [theme] = useTheme();
@@ -82,12 +84,24 @@ const WorkOutScreen = () => {
     );
   };
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const unsubscribe = navigation.addListener('beforeRemove', () => {
+        playASound.resetScore();
+      });
+
+      return () => unsubscribe();
+    }, [navigation]),
+  );
+
   return (
-    <View style={{flex: 1, paddingBottom: 5}}>
+    <View style={{flex: 1, paddingBottom: 15}}>
       {renderRoutines()}
       <WorkOutExercises exercises={selectedExercises} />
       {workOutSets.length ? (
-        <Button onPress={handleFinish}>{t('End workout')}</Button>
+        <View style={{marginTop: 24}}>
+          <Button onPress={handleFinish}>{t('End workout')}</Button>
+        </View>
       ) : null}
     </View>
   );

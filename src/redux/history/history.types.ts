@@ -10,7 +10,7 @@ export type HistoryItem = {
   sets: WorkOutSet[];
   routineId: string;
   routineName: string;
-  date: number;
+  date: string;
 };
 
 type addHistoryItem = IAction<HistoryActionTypes.ADD_HISTORY_ITEM, HistoryItem>;

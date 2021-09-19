@@ -27,7 +27,7 @@ const HistoryListItem = ({set, number, preview}: Props) => {
       <Text style={styles.textStyle}>
         #{number}
         {'    '}
-        {new Date(date).toLocaleString()}
+        {date}
       </Text>
       <View style={styles.crossLine} />
       <Text style={styles.textNameStyle}>{exerciseName}</Text>

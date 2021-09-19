@@ -17,6 +17,10 @@
 - [x] localization with i18   ✅(18.09.2021)
 - [x] dark/light theme  ✅(16.09.2021)
 - [x] some chart for history component   ✅(18.09.2021)
-- [ ] fix Date.toLocale string locale
+- [x] fix Date.toLocale string locale  ✅(19.09.2021)
+- [ ] some validation for inputs
+- [x] sounds for workout/set submit ✅(19.09.2021)
+- [ ] refactor settings screen(add some components, add sound off/on option)
+- [ ] make an option to use workout without routine and add exercises manually;
 
 

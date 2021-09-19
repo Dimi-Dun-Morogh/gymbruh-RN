@@ -9,6 +9,8 @@ import {updateExercise} from '../../redux/exercises/exercise.actions';
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {addNewSet, deleteSet} from '../../redux/workout/workout.actions';
 import {Theme} from '../../themes';
+import {format} from 'date-fns';
+import {playASound} from '../../helpers';
 
 type Props = {
   exercise: Exercise;
@@ -29,10 +31,11 @@ const WorkOutExerciseItem = ({exercise}: Props) => {
       id: generateId.id(),
       exerciseId: exercise.id,
       exerciseName: exercise.name,
-      date: Number(new Date()),
+      date: format(new Date(), 'MM/dd/yyyy H:mm '),
     };
     dispatch(addNewSet(newSet));
     dispatch(updateExercise(newSet));
+    playASound.onSetSubmit();
   };
 
   return (

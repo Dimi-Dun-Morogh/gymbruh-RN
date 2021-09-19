@@ -13,7 +13,7 @@ export const handleExerciseUpdate = (
       ? {
           reps,
           weight,
-          date: new Date(date).toLocaleString(),
+          date,
         }
       : oldExercise.recordReps;
   };
@@ -22,14 +22,14 @@ export const handleExerciseUpdate = (
       ? {
           reps,
           weight,
-          date: new Date(date).toLocaleString(),
+          date,
         }
       : oldExercise.recordReps;
   };
 
   return {
     ...oldExercise,
-    lastDate: new Date(date).toLocaleString(),
+    lastDate: date,
     lastReps: reps,
     lastWeight: weight,
     allSets: 1 + oldExercise.allSets,
