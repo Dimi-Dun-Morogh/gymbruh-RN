@@ -20,7 +20,7 @@
 - [x] fix Date.toLocale string locale  ✅(19.09.2021)
 - [ ] some validation for inputs
 - [x] sounds for workout/set submit ✅(19.09.2021)
-- [ ] refactor settings screen(add some components, add sound off/on option)
+- [x] refactor settings screen(add some components, add sound off/on option) ✅(21.09.2021)
 - [ ] make an option to use workout without routine and add exercises manually;
 
 

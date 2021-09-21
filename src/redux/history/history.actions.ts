@@ -14,7 +14,7 @@ export const addHistory = (
       routineId,
       sets,
       routineName,
-      date: format(new Date(), 'MM/dd/yyyy H:mm '),
+      date: format(new Date(), 'dd/MM/yyyy H:mm '),
       id: generateId.id(),
     },
   };

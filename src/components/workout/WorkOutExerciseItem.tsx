@@ -31,7 +31,7 @@ const WorkOutExerciseItem = ({exercise}: Props) => {
       id: generateId.id(),
       exerciseId: exercise.id,
       exerciseName: exercise.name,
-      date: format(new Date(), 'MM/dd/yyyy H:mm '),
+      date: format(new Date(), 'dd/MM/yyyy H:mm '),
     };
     dispatch(addNewSet(newSet));
     dispatch(updateExercise(newSet));

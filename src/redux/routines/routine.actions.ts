@@ -30,7 +30,7 @@ export const updateRoutine = (routine: Routine) => {
     payload: {
       ...routine,
       allCount: 1 + routine.allCount,
-      lastDate: format(new Date(), 'MM/dd/yyyy H:mm '),
+      lastDate: format(new Date(), 'dd/MM/yyyy H:mm '),
     },
   };
 };

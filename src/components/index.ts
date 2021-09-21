@@ -15,3 +15,6 @@ export * from './history/HistoryListItem';
 export * from './common/Modal';
 export * from './history/HistoryPreview';
 export * from './history/HistoryPieChart';
+export * from './settings_/SettingsSection';
+export * from './settings_/SettingsPicker';
+export * from './settings_/SettingsSwitch';

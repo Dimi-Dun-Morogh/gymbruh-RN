@@ -22,3 +22,10 @@ export const setDarkTheme = (bool: boolean) => {
     payload: bool,
   };
 };
+
+export const setSound = (bool: boolean) => {
+  return {
+    type: appSettingsActionTypes.SET_SOUND,
+    payload: bool,
+  };
+};

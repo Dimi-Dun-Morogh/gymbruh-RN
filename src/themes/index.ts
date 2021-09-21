@@ -10,6 +10,7 @@ const dark = {
   borderColorInput: '#8a63f2',
   selectedBorderColor: '#fff',
   selectedTextColor: '#fff',
+  switchThumb: 'orange',
 };
 
 export type Theme = typeof dark;
@@ -26,6 +27,7 @@ const light: Theme = {
   textColorSecond: 'blue',
   textColorThird: 'red',
   selectedTextColor: '#fff',
+  switchThumb: '#f4f3f4',
 };
 
 const themes = {

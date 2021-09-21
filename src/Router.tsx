@@ -27,6 +27,8 @@ import {Theme} from './themes/';
 import {useTheme} from './hooks/useTheme';
 import {useTranslation} from 'react-i18next';
 import i18n from './locales/';
+import {useAppSelector} from './hooks/storeHooks';
+import {playASound} from './helpers';
 
 const initI18n = i18n;
 
@@ -42,7 +44,11 @@ const Tabs = () => {
     tabBarActiveBackgroundColor: '#8a63f2',
     tabBarInactiveTintColor: theme.textColorMain,
   };
+  const soundOn = useAppSelector(state => state.appSettingsState.soundOn);
   const {t} = useTranslation();
+  React.useEffect(() => {
+    playASound.switchSound(soundOn);
+  }, [soundOn]);
 
   return (
     <Tab.Navigator

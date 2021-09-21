@@ -14,6 +14,7 @@ class PlayASound {
     ULTRA_KILL: 'ultrakill.wav',
     GOD_LIKE: 'godlike.wav',
   };
+  soundOn = true;
 
   private getRandomSound() {
     const isRandom = Math.floor(Math.random() * 4 + 1);
@@ -24,6 +25,9 @@ class PlayASound {
     return this.sounds[index];
   }
   private play(name: string) {
+    if (!this.soundOn) {
+      return;
+    }
     Sound.setCategory('Playback');
     var mySound = new Sound(name, Sound.MAIN_BUNDLE, error => {
       if (error) {
@@ -65,6 +69,9 @@ class PlayASound {
   }
   resetScore() {
     this.hitsCount = 0;
+  }
+  switchSound(bool: boolean) {
+    this.soundOn = bool;
   }
 }
 

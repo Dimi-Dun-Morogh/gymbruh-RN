@@ -88,10 +88,11 @@ const WorkOutScreen = () => {
     React.useCallback(() => {
       const unsubscribe = navigation.addListener('beforeRemove', () => {
         playASound.resetScore();
+        dispatch(finishWorkOut());
       });
 
       return () => unsubscribe();
-    }, [navigation]),
+    }, [navigation, dispatch]),
   );
 
   return (

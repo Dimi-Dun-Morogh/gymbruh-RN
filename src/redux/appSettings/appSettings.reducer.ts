@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   weightPoints: weights,
   currentWeightPoint: 'kg',
   darkTheme: true,
+  soundOn: true,
 };
 
 type InitialStateType = typeof INITIAL_STATE;
@@ -35,6 +36,11 @@ const AppSettingsReducer: Reducer<InitialStateType, AppSettingsActions> = (
       return {
         ...state,
         currentWeightPoint: action.payload!,
+      };
+    case appSettingsActionTypes.SET_SOUND:
+      return {
+        ...state,
+        soundOn: action.payload!,
       };
     default:
       return state;
