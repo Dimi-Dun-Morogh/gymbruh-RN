@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
 import {useDispatch} from 'react-redux';
+import Validator from '../../helpers/validator';
 import {
   createExercise,
   editExercise,
@@ -10,7 +11,13 @@ import {
 } from '../../redux/exercises/exercise.actions';
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {NavProp} from '../../types/routingTypes';
-import {Button, Input, IconButton as HeaderButton, Modal} from '../index';
+import {
+  Button,
+  Input,
+  IconButton as HeaderButton,
+  Modal,
+  ErrorsInput,
+} from '../index';
 
 type Props = {
   exercise: Exercise | null;
@@ -18,6 +25,7 @@ type Props = {
 
 const ExerciseCreateForm = ({exercise}: Props) => {
   const [exerName, setExercName] = useState('');
+  const [errors, setErrors] = useState<string[]>([]);
   const [editing, setEditing] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
@@ -45,6 +53,11 @@ const ExerciseCreateForm = ({exercise}: Props) => {
   }, [exercise, navigation]);
 
   const onSubmit = () => {
+    const validation = Validator('exercise', exerName);
+    if (validation.length) {
+      setErrors(validation);
+      return;
+    }
     if (editing) {
       const newExerc = {
         ...exercise!,
@@ -71,10 +84,14 @@ const ExerciseCreateForm = ({exercise}: Props) => {
       />
       <Input
         value={exerName}
-        onChangeText={text => setExercName(text)}
+        onChangeText={text => {
+          setErrors([]);
+          setExercName(text);
+        }}
         placeholder={t('bench press')}
         label={t('exercise name')}
       />
+      <ErrorsInput errors={errors} />
       <Button onPress={onSubmit}>{exercise ? t('edit') : t('create')}</Button>
     </View>
   );

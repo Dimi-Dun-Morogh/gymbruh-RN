@@ -18,9 +18,10 @@
 - [x] dark/light theme  ✅(16.09.2021)
 - [x] some chart for history component   ✅(18.09.2021)
 - [x] fix Date.toLocale string locale  ✅(19.09.2021)
-- [ ] some validation for inputs
+- [x] some validation for inputs  ✅(22.09.2021)
 - [x] sounds for workout/set submit ✅(19.09.2021)
 - [x] refactor settings screen(add some components, add sound off/on option) ✅(21.09.2021)
 - [ ] make an option to use workout without routine and add exercises manually;
+- [ ] prompt user before leaving workout screen;
 
 

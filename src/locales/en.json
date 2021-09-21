@@ -32,5 +32,6 @@
   "date":"date",
   "not chosen": "not chosen",
   "Are you sure to delete":"Are you sure to delete",
-  "sound": "Sound"
+  "sound": "Sound",
+  "this field is required":"this field is required"
 }

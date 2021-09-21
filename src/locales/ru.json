@@ -32,5 +32,6 @@
   "date":"дата",
   "not chosen": "не выбрано",
   "Are you sure to delete":"Вы уверены что хотите удалить",
-  "sound": "Звуки"
+  "sound": "Звуки",
+  "this field is required":"заполните это поле"
 }

@@ -8,6 +8,7 @@ import {
   TextBlock,
   IconButton as HeaderButton,
   Modal,
+  ErrorsInput,
 } from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Exercise} from '../../redux/exercises/exercise.types';
@@ -19,12 +20,14 @@ import {
 import {routineCreateScreenProp, NavPropsTabs} from '../../types/routingTypes';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
+import Validator from '../../helpers/validator';
 
 const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedExerc, setSelectedExerc] = useState<Set<string>>(new Set());
+  const [errors, setErrors] = useState<string[]>([]);
 
   const dispatch = useDispatch();
   const navigation = useNavigation<NavPropsTabs>();
@@ -32,6 +35,11 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   const {t} = useTranslation();
 
   const onSubmit = () => {
+    const validate = Validator('routine', name);
+    if (validate.length) {
+      setErrors(validate);
+      return;
+    }
     if (id) {
       //updating
       dispatch(
@@ -128,8 +136,12 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
         label={t('enter name')}
         value={name}
         placeholder={t('legs day')}
-        onChangeText={setName}
+        onChangeText={newName => {
+          setErrors([]);
+          setName(newName);
+        }}
       />
+      <ErrorsInput errors={errors} />
       {renderExercises()}
       <Button onPress={onSubmit}>OK</Button>
     </View>
