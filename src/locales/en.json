@@ -25,13 +25,14 @@
   "haven't done yet": "haven't done yet",
   "amount of all sets": "amount of all sets",
   "last set": "last set",
-  "reps":"reps",
-  "weight":"weight",
+  "reps": "reps",
+  "weight": "weight",
   "record reps": "record reps",
   "record weight": "record weight",
-  "date":"date",
+  "date": "date",
   "not chosen": "not chosen",
-  "Are you sure to delete":"Are you sure to delete",
+  "Are you sure to delete": "Are you sure to delete",
   "sound": "Sound",
-  "this field is required":"this field is required"
+  "this field is required": "this field is required",
+  "You did not finish your workout, all progress will be lost, you sure  to leave?": "You did not finish your workout, all progress will be lost, you sure  to leave?"
 }

@@ -2,11 +2,11 @@ import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {startWorkOut, finishWorkOut} from '../../redux/workout/workout.actions';
-import {TextBlock, WorkOutExercises, Button} from '../../components';
+import {TextBlock, WorkOutExercises, Button, Modal} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Routine} from '../../redux/routines/routine.types';
 import {useDispatch} from 'react-redux';
-import {useFocusEffect, useNavigation} from '@react-navigation/core';
+import {useFocusEffect} from '@react-navigation/core';
 import {NavProp} from '../../types/routingTypes';
 import {addHistory} from '../../redux/history/history.actions';
 import {updateRoutine} from '../../redux/routines/routine.actions';
@@ -15,8 +15,13 @@ import {Theme} from '../../themes/';
 import {useTranslation} from 'react-i18next';
 import {playASound} from '../../helpers';
 
-const WorkOutScreen = () => {
+type Props = {
+  navigation: NavProp;
+};
+
+const WorkOutScreen = ({navigation}: Props) => {
   const routines = useAppSelector(state => state.routinesState.routines);
+  const [modal, setModal] = useState(false);
   const [selectedRoutine, setSelectedRoutine] = useState<null | Routine>(null);
   const [selectedExercises, setSelectedExercises] = useState<string[] | []>([]);
   const {sets: workOutSets, routineId} = useAppSelector(
@@ -24,7 +29,6 @@ const WorkOutScreen = () => {
   );
 
   const dispatch = useDispatch();
-  const navigation = useNavigation<NavProp>();
 
   const handlePick = (routine: Routine | null) => {
     setSelectedRoutine(routine);
@@ -38,7 +42,6 @@ const WorkOutScreen = () => {
   };
 
   const handleFinish = () => {
-    dispatch(finishWorkOut());
     dispatch(
       addHistory(
         routineId,
@@ -49,9 +52,10 @@ const WorkOutScreen = () => {
     if (selectedRoutine) {
       dispatch(updateRoutine(selectedRoutine));
     }
+    dispatch(finishWorkOut());
 
-    navigation.goBack();
     playASound.onWorkOutSubmit();
+    navigation.navigate('home');
   };
 
   const [theme] = useTheme();
@@ -86,13 +90,16 @@ const WorkOutScreen = () => {
 
   useFocusEffect(
     React.useCallback(() => {
-      const unsubscribe = navigation.addListener('beforeRemove', () => {
-        playASound.resetScore();
-        dispatch(finishWorkOut());
-      });
+      navigation.addListener('beforeRemove', e => {
+        if (workOutSets.length) {
+          e.preventDefault();
+          setModal(true);
+          return;
+        }
 
-      return () => unsubscribe();
-    }, [navigation, dispatch]),
+        playASound.resetScore();
+      });
+    }, [navigation, workOutSets.length]),
   );
 
   return (
@@ -104,6 +111,15 @@ const WorkOutScreen = () => {
           <Button onPress={handleFinish}>{t('End workout')}</Button>
         </View>
       ) : null}
+      <Modal
+        text="You did not finish your workout, all progress will be lost, you sure  to leave?"
+        visible={modal}
+        onDecline={() => setModal(!modal)}
+        onSuccess={() => {
+          dispatch(finishWorkOut());
+          navigation.navigate('home');
+        }}
+      />
     </View>
   );
 };

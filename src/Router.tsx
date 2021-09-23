@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
@@ -32,7 +33,9 @@ import {playASound} from './helpers';
 
 const initI18n = i18n;
 
-const Stack = createNativeStackNavigator<RootStackScreenList>();
+// const Stack = createNativeStackNavigator<RootStackScreenList>();
+
+const Stack = createStackNavigator<RootStackScreenList>();
 
 const Tab = createBottomTabNavigator<BottomTabScreenList>();
 
@@ -130,9 +133,10 @@ const StackNav = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        contentStyle: {
+        cardStyle: {
           backgroundColor: theme.bgcContent,
         },
+
         headerTintColor: styles(theme).headerTitleStyle.color,
         ...styles(theme),
       }}>

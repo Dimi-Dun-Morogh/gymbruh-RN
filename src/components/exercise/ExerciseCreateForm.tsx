@@ -78,6 +78,7 @@ const ExerciseCreateForm = ({exercise}: Props) => {
   return (
     <View style={styles.containerStyle}>
       <Modal
+        text="Are you sure to delete?"
         visible={modalVisible}
         onDecline={() => setModalVisible(false)}
         onSuccess={() => handleDeletion()}

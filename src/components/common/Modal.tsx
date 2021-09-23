@@ -8,18 +8,16 @@ type Props = {
   visible: boolean;
   onSuccess: () => void;
   onDecline: () => void;
+  text: string;
 };
 
-const Modal = ({visible, onSuccess, onDecline}: Props) => {
+const Modal = ({visible, onSuccess, onDecline, text}: Props) => {
   const {t} = useTranslation();
   return (
     <RnModal visible={visible} animationType="slide" transparent>
       <View style={styles.containerStyle}>
         <View style={styles.contentContainerStyle}>
-          <Text style={styles.textStyle}>
-            {' '}
-            {t('Are you sure to delete')} ?{' '}
-          </Text>
+          <Text style={styles.textStyle}> {t(text)}</Text>
           <View style={styles.buttonsContainerStyle}>
             <Button onPress={onDecline} bgColor="red" color="#fff">
               <Icon name="close" size={33} />

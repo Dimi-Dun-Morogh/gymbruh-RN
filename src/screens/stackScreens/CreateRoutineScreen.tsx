@@ -128,6 +128,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
       <Modal
+        text="'Are you sure to delete?"
         visible={modalVisible}
         onDecline={() => setModalVisible(false)}
         onSuccess={() => handleDeletion()}
