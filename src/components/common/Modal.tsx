@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {Modal as RnModal, StyleSheet, View, Text} from 'react-native';
 import {Button} from '../';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -9,15 +9,17 @@ type Props = {
   onSuccess: () => void;
   onDecline: () => void;
   text: string;
+  children?: ReactNode;
 };
 
-const Modal = ({visible, onSuccess, onDecline, text}: Props) => {
+const Modal = ({visible, onSuccess, onDecline, text, children}: Props) => {
   const {t} = useTranslation();
   return (
     <RnModal visible={visible} animationType="slide" transparent>
       <View style={styles.containerStyle}>
         <View style={styles.contentContainerStyle}>
           <Text style={styles.textStyle}> {t(text)}</Text>
+          {children}
           <View style={styles.buttonsContainerStyle}>
             <Button onPress={onDecline} bgColor="red" color="#fff">
               <Icon name="close" size={33} />

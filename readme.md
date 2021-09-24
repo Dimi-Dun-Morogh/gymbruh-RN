@@ -21,7 +21,7 @@
 - [x] some validation for inputs  ✅(22.09.2021)
 - [x] sounds for workout/set submit ✅(19.09.2021)
 - [x] refactor settings screen(add some components, add sound off/on option) ✅(21.09.2021)
-- [ ] make an option to use workout without routine and add exercises manually;
+- [x] make an option to use workout without routine and add exercises manually;  ✅(24.09.2021)
 - [x] prompt user before leaving workout screen; ✅(24.09.2021)
 
 

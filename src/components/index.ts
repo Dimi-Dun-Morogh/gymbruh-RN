@@ -19,3 +19,4 @@ export * from './settings_/SettingsSection';
 export * from './settings_/SettingsPicker';
 export * from './settings_/SettingsSwitch';
 export * from './common/ErrorsInput';
+export * from './workout/WorkOutAddExercise';

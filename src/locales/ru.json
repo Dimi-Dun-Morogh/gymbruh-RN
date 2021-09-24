@@ -34,5 +34,8 @@
   "Are you sure to delete":"Вы уверены что хотите удалить",
   "sound": "Звуки",
   "this field is required":"заполните это поле",
-  "You did not finish your workout, all progress will be lost, you sure  to leave?": "Вы не закончили тренировку, весь прогресс будет потерян, вы уверены что хотите выйти?"
+  "You did not finish your workout, all progress will be lost, you sure  to leave?": "Вы не закончили тренировку, весь прогресс будет потерян, вы уверены что хотите выйти?",
+  "Add exercise": "Добавить упражнение",
+  "Chose routine":"Выберите программу",
+  "or add exercise": "или добавьте упражнение"
 }

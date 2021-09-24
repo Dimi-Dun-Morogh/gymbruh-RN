@@ -14,7 +14,7 @@ const WorkOutExercises = ({exercises}: Props) => {
   }
   const selectedExercises = exercises.map(id => allExercises[id]);
   return (
-    <ScrollView style={{flex: 1}}>
+    <ScrollView style={{}}>
       {selectedExercises.map(item => (
         <WorkOutExerciseItem key={item.id} exercise={item} />
       ))}

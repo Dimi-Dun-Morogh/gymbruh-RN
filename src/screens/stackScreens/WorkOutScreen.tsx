@@ -1,8 +1,14 @@
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ScrollView, Text} from 'react-native';
 import {startWorkOut, finishWorkOut} from '../../redux/workout/workout.actions';
-import {TextBlock, WorkOutExercises, Button, Modal} from '../../components';
+import {
+  TextBlock,
+  WorkOutExercises,
+  Button,
+  Modal,
+  WorkOutAddExercise,
+} from '../../components';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {Routine} from '../../redux/routines/routine.types';
 import {useDispatch} from 'react-redux';
@@ -23,12 +29,16 @@ const WorkOutScreen = ({navigation}: Props) => {
   const routines = useAppSelector(state => state.routinesState.routines);
   const [modal, setModal] = useState(false);
   const [selectedRoutine, setSelectedRoutine] = useState<null | Routine>(null);
-  const [selectedExercises, setSelectedExercises] = useState<string[] | []>([]);
+  const [selectedExercises, setSelectedExercises] = useState<string[]>([]);
   const {sets: workOutSets, routineId} = useAppSelector(
     state => state.workOutState,
   );
 
   const dispatch = useDispatch();
+
+  const addExercise = (id: string) => {
+    setSelectedExercises([...selectedExercises, id]);
+  };
 
   const handlePick = (routine: Routine | null) => {
     setSelectedRoutine(routine);
@@ -103,8 +113,11 @@ const WorkOutScreen = ({navigation}: Props) => {
   );
 
   return (
-    <View style={{flex: 1, paddingBottom: 15}}>
+    <ScrollView style={{flex: 1, paddingBottom: 15}}>
+      <Text style={styles.textStyle}> {t('Chose routine')}:</Text>
       {renderRoutines()}
+      <Text style={styles.textStyle}> {t('or add exercise')}:</Text>
+      <WorkOutAddExercise onSelect={addExercise} />
       <WorkOutExercises exercises={selectedExercises} />
       {workOutSets.length ? (
         <View style={{marginTop: 24}}>
@@ -120,7 +133,7 @@ const WorkOutScreen = ({navigation}: Props) => {
           navigation.navigate('home');
         }}
       />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -143,6 +156,11 @@ const style = (theme: Theme) =>
       width: 350,
       backgroundColor: theme.bgcSecondary,
       color: theme.textColorMain,
+    },
+    textStyle: {
+      color: theme.textColorMain,
+      textAlign: 'center',
+      fontSize: 20,
     },
   });
 
