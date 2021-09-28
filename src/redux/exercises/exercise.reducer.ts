@@ -1,4 +1,4 @@
-import {handleExerciseUpdate} from './exercise.helpers';
+import {handleExercisesUpdate} from './exercise.helpers';
 import {Exercise, ExerciseActions, exerciseActionTypes} from './exercise.types';
 // var mockData = require('../../mocks/exercises');
 
@@ -26,13 +26,7 @@ const exerciseReducer = (
     case exerciseActionTypes.UPDATE_EXERCISE:
       return {
         ...state,
-        exercises: {
-          ...state.exercises,
-          [action.payload?.exerciseId!]: handleExerciseUpdate(
-            {...state},
-            action.payload!,
-          ),
-        },
+        exercises: handleExercisesUpdate(state.exercises, action.payload!),
       };
     case exerciseActionTypes.EDIT_EXERCISE:
       return {

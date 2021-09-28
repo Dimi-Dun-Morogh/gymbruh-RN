@@ -59,3 +59,9 @@ buck-out/
 /ios/Pods/
 
 out
+
+*keystore
+keystore*
+.jest
+
+*.hprof

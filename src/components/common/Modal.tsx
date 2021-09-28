@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from 'react';
 import {Modal as RnModal, StyleSheet, View, Text} from 'react-native';
 import {Button} from '../';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -10,24 +10,41 @@ type Props = {
   onDecline: () => void;
   text: string;
   children?: ReactNode;
+  topClose?: boolean;
 };
 
-const Modal = ({visible, onSuccess, onDecline, text, children}: Props) => {
+const Modal = ({
+  visible,
+  onSuccess,
+  onDecline,
+  text,
+  children,
+  topClose,
+}: Props) => {
   const {t} = useTranslation();
   return (
     <RnModal visible={visible} animationType="slide" transparent>
       <View style={styles.containerStyle}>
         <View style={styles.contentContainerStyle}>
+          {topClose ? (
+            <View style={styles.topButtonContainer}>
+              <Button onPress={onDecline} bgColor="red" color="#fff">
+                <Icon name="close" size={20} />
+              </Button>
+            </View>
+          ) : null}
           <Text style={styles.textStyle}> {t(text)}</Text>
           {children}
-          <View style={styles.buttonsContainerStyle}>
-            <Button onPress={onDecline} bgColor="red" color="#fff">
-              <Icon name="close" size={33} />
-            </Button>
-            <Button onPress={onSuccess} bgColor="green" color="#fff">
-              <Icon name="check" size={33} />
-            </Button>
-          </View>
+          {!topClose ? (
+            <View style={styles.buttonsContainerStyle}>
+              <Button onPress={onDecline} bgColor="red" color="#fff">
+                <Icon name="close" size={33} />
+              </Button>
+              <Button onPress={onSuccess} bgColor="green" color="#fff">
+                <Icon name="check" size={33} />
+              </Button>
+            </View>
+          ) : null}
         </View>
       </View>
     </RnModal>
@@ -41,17 +58,26 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     backgroundColor: 'black',
-    paddingVertical: 60,
+    paddingVertical: 30,
   },
   textStyle: {
     color: '#fff',
     fontSize: 25,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
+    paddingRight: 50,
   },
   buttonsContainerStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  topButtonContainer: {
+    position: 'absolute',
+    width: 90,
+    height: 90,
+    right: 0,
+    top: 0,
+    // zIndex: 500,
   },
 });
 

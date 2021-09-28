@@ -43,24 +43,24 @@ const ExerciseDetailScreen = ({route, navigation}: exercDetailScreenProp) => {
     <View style={styles.container}>
       <TextBlock>{name}</TextBlock>
       <TextBlock>
-        {t('amount of all sets')}: {allSets || '-'}
+        {t('amount of all sets')}: {allSets || ''}
       </TextBlock>
       <TextBlock>
-        {t('last time done')}: {lastDate || '-'}{' '}
+        {t('last time done')}: {lastDate || ''}{' '}
       </TextBlock>
       <TextBlock>
         {t('last set')}:{'\n'} {t('reps')} - {lastReps} {t('weight')} -{' '}
-        {lastWeight || '-'}
+        {lastWeight || ''}
       </TextBlock>
       <TextBlock>
         {t('record reps')}:{'\n'} {t('reps')} - {recordReps.reps} {t('weight')}{' '}
-        -{recordReps.weight || '-'} {'\n'}
-        {t('date')} - {recordReps.date || '-'}
+        -{recordReps.weight || ''} {'\n'}
+        {t('date')} - {recordReps.date || ''}
       </TextBlock>
       <TextBlock>
         {t('record weight')}:{'\n'} {t('weight')} - {recordWeight.weight}{' '}
         {t('reps')} - {recordWeight.reps} {'\n'}
-        {t('date')} - {recordWeight.date || '-'}
+        {t('date')} - {recordWeight.date || ''}
       </TextBlock>
     </View>
   );

@@ -215,6 +215,7 @@ const styles = (theme: Theme) => {
   return StyleSheet.create({
     tabBarStyle: {
       backgroundColor: theme.bgcTabs,
+      borderTopWidth: 0,
     },
     tabBarLabelStyle: {
       fontSize: 16,

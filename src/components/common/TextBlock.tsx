@@ -23,10 +23,12 @@ const style = (theme: Theme) =>
     container: {
       backgroundColor: theme.bgcSecondary,
       padding: 7,
-      paddingBottom: 22,
+      // paddingBottom: 22,
       borderStyle: 'solid',
       borderBottomWidth: 1,
       borderColor: 'green',
+      // justifyContent: 'center',
+      // alignItems: 'center',
     },
     text: {
       color: theme.textColorMain,

@@ -28,7 +28,10 @@ export type Exercise = {
 };
 
 type CreateExercise = IAction<exerciseActionTypes.CREATE_EXERCISE, Exercise>;
-type UpdateExercise = IAction<exerciseActionTypes.UPDATE_EXERCISE, WorkOutSet>;
+type UpdateExercise = IAction<
+  exerciseActionTypes.UPDATE_EXERCISE,
+  WorkOutSet[]
+>;
 type EditExercise = IAction<exerciseActionTypes.EDIT_EXERCISE, Exercise>;
 type DeleteExercise = IAction<exerciseActionTypes.DELETE_EXERCISE, string>;
 

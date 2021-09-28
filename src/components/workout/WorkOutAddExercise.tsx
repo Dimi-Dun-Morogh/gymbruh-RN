@@ -20,10 +20,11 @@ const WorkOutAddExercise = ({onSelect}: Props) => {
     <View style={{marginVertical: 10}}>
       <Button onPress={() => setModal(true)}>{t('Add exercise')}</Button>
       <Modal
+        topClose
         onSuccess={() => null}
         onDecline={() => setModal(false)}
         visible={modal}
-        text="">
+        text="Tap on exercise to select">
         <FlatList
           data={Object.values(exercises)}
           renderItem={({item}) => (

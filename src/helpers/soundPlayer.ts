@@ -3,7 +3,7 @@ import Sound from 'react-native-sound';
 class PlayASound {
   private hitsCount = 0;
   private sounds = [
-    'shao_laugh.mp3',
+    'laugh.mp3',
     'impressive.mp3',
     'ronnie_lightweight.mp3',
     'yeahbuddy.mp3',

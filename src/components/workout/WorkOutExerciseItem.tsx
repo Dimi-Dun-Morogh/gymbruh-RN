@@ -5,7 +5,7 @@ import {WorkOutSet, WorkOutSetHistoryItem} from '..';
 import {generateId} from '../../helpers';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {useTheme} from '../../hooks/useTheme';
-import {updateExercise} from '../../redux/exercises/exercise.actions';
+
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {addNewSet, deleteSet} from '../../redux/workout/workout.actions';
 import {Theme} from '../../themes';
@@ -34,7 +34,7 @@ const WorkOutExerciseItem = ({exercise}: Props) => {
       date: format(new Date(), 'dd/MM/yyyy H:mm '),
     };
     dispatch(addNewSet(newSet));
-    dispatch(updateExercise(newSet));
+
     playASound.onSetSubmit();
   };
 

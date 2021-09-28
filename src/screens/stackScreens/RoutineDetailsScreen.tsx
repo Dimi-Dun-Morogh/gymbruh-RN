@@ -53,7 +53,7 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
       <TextBlock>{name}</TextBlock>
       <TextBlock>Выполнено раз - {allCount}</TextBlock>
       <TextBlock>
-        Дата последнего выполнения - {lastDate ? lastDate : '-'}
+        Дата последнего выполнения - {lastDate ? lastDate : ''}
       </TextBlock>
       {renderExercises()}
     </View>

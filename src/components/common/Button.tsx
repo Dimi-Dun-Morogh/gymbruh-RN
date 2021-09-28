@@ -1,7 +1,8 @@
 import React, {ReactNode} from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
-import {useAppSelector} from '../../hooks/storeHooks';
-import {Theme, themePicker} from '../../themes/';
+
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes/';
 
 type ButtonProps = {
   children: ReactNode;
@@ -11,8 +12,7 @@ type ButtonProps = {
 };
 
 const Button = ({children, onPress, color, bgColor}: ButtonProps) => {
-  const darkTheme = useAppSelector(state => state.appSettingsState.darkTheme);
-  const theme = themePicker(darkTheme);
+  const [theme] = useTheme();
   const styles = style(theme);
   return (
     <TouchableOpacity

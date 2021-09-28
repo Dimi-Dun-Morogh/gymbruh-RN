@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import {useAppSelector} from '../../hooks/storeHooks';
-import {themePicker, Theme} from '../../themes';
+
+import {useTheme} from '../../hooks/useTheme';
+import {Theme} from '../../themes';
 
 type Prop = {
   label: string;
@@ -11,8 +12,7 @@ type Prop = {
   password?: boolean;
 };
 const Input = ({label, value, onChangeText, placeholder, password}: Prop) => {
-  const isDarkTheme = useAppSelector(state => state.appSettingsState.darkTheme);
-  const theme = themePicker(isDarkTheme);
+  const [theme] = useTheme();
   const styles = style(theme);
 
   return (

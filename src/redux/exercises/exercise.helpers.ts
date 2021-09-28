@@ -1,11 +1,26 @@
 import {WorkOutSet} from '../workout/workout.types';
-import {InitialExerState} from './exercise.reducer';
+
+import {Exercise} from './exercise.types';
+
+export const handleExercisesUpdate = (
+  exercises: {[key: string]: Exercise},
+  sets: WorkOutSet[],
+) => {
+  const newExercises = {
+    ...exercises,
+  };
+  sets.forEach(
+    set =>
+      (newExercises[set.exerciseId] = handleExerciseUpdate(newExercises, set)),
+  );
+  return newExercises;
+};
 
 export const handleExerciseUpdate = (
-  state: InitialExerState,
+  exercises: {[key: string]: Exercise},
   set: WorkOutSet,
 ) => {
-  const oldExercise = state.exercises[set.exerciseId];
+  const oldExercise = exercises[set.exerciseId];
   const {date, reps, weight} = set;
 
   const isRecordReps = () => {

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 10,
+      "marginHorizontal": 20,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontSize": 20,
+        "paddingBottom": 10,
+      }
+    }
+  >
+    hi
+  </Text>
+  <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
+    onChangeText={[Function]}
+    placeholder="world"
+    placeholderTextColor="gray"
+    style={
+      Object {
+        "backgroundColor": "#1f222b",
+        "borderColor": "#8a63f2",
+        "borderRadius": 10,
+        "borderStyle": "solid",
+        "borderWidth": 3,
+        "color": "#fff",
+        "fontSize": 24,
+        "padding": 10,
+        "width": "100%",
+      }
+    }
+    value="hello"
+  />
+</View>
+`;

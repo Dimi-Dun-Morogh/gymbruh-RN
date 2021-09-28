@@ -28,10 +28,10 @@ export const createExercise = (name: string) => {
   };
 };
 
-export const updateExercise = (set: WorkOutSet) => {
+export const updateExercises = (sets: WorkOutSet[]) => {
   return {
     type: exerciseActionTypes.UPDATE_EXERCISE,
-    payload: set,
+    payload: sets,
   };
 };
 

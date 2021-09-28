@@ -20,6 +20,7 @@ import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes/';
 import {useTranslation} from 'react-i18next';
 import {playASound} from '../../helpers';
+import {updateExercises} from '../../redux/exercises/exercise.actions';
 
 type Props = {
   navigation: NavProp;
@@ -62,6 +63,7 @@ const WorkOutScreen = ({navigation}: Props) => {
     if (selectedRoutine) {
       dispatch(updateRoutine(selectedRoutine));
     }
+    dispatch(updateExercises(workOutSets));
     dispatch(finishWorkOut());
 
     playASound.onWorkOutSubmit();
