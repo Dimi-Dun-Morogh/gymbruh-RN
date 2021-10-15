@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {useDispatch} from 'react-redux';
@@ -8,6 +8,7 @@ import {
   setWeight,
   setSound,
 } from '../../redux/appSettings/appSettings.actions';
+
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes';
 import {useTranslation} from 'react-i18next';
@@ -15,9 +16,15 @@ import {
   SettingsPicker,
   SettingsSection,
   SettingsSwitch,
+  Button,
+  Modal,
 } from '../../components';
+import backUpper from '../../helpers/backUpper';
 
 const SettingsScreen = () => {
+  const [modal, setModal] = useState(false);
+  const [modalText, setModalText] = useState('');
+
   const {
     languages,
     currentLanguage,
@@ -32,8 +39,29 @@ const SettingsScreen = () => {
   const [theme] = useTheme();
   const styles = style(theme);
 
+  const createBackUp = async () => {
+    const success = await backUpper.backUpToDownloads();
+    if (success) {
+      setModalText(backUpper.getInfoText().BACKUP_CREATE_SUCCESS);
+      setModal(true);
+    }
+  };
+
+  const pickFileBackUp = async () => {
+    const success = await backUpper.pickFile();
+    if (success) {
+      backUpper.setBackUp(success);
+    }
+  };
+
   return (
     <View style={styles.containerStyle}>
+      <Modal
+        topClose
+        visible={modal}
+        onDecline={() => setModal(false)}
+        text={t(modalText)}
+      />
       <SettingsSection label={t('dark theme')}>
         <SettingsSwitch
           value={darkTheme}
@@ -62,6 +90,22 @@ const SettingsScreen = () => {
           onValueChange={() => {
             dispatch(setSound(!soundOn));
           }}
+        />
+      </SettingsSection>
+      <SettingsSection label={t('create data backup')}>
+        <Button
+          onPress={createBackUp}
+          icon="add"
+          iconSize={33}
+          ButtonStyle={{marginHorizontal: 0}}
+        />
+      </SettingsSection>
+      <SettingsSection label={t('download data backup from device')}>
+        <Button
+          onPress={pickFileBackUp}
+          icon="file-upload"
+          iconSize={33}
+          ButtonStyle={{marginHorizontal: 0}}
         />
       </SettingsSection>
     </View>

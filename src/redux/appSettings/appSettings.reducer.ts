@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   soundOn: true,
 };
 
-type InitialStateType = typeof INITIAL_STATE;
+export type InitialStateType = typeof INITIAL_STATE;
 
 const AppSettingsReducer: Reducer<InitialStateType, AppSettingsActions> = (
   state = INITIAL_STATE,
@@ -42,6 +42,9 @@ const AppSettingsReducer: Reducer<InitialStateType, AppSettingsActions> = (
         ...state,
         soundOn: action.payload!,
       };
+    case appSettingsActionTypes.BACKUP_SETTINGS:
+      console.log(action);
+      return action.payload!;
     default:
       return state;
   }

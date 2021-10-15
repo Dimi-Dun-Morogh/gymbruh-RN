@@ -46,6 +46,8 @@ const exerciseReducer = (
           ),
         ),
       };
+    case exerciseActionTypes.BACKUP_EXERCISE:
+      return action.payload!;
     default:
       return state;
   }

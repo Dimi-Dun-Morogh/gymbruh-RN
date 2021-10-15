@@ -5,7 +5,7 @@ import {Theme} from '../../themes';
 
 type Props = {
   children: React.ReactNode;
-  label: string;
+  label?: string;
 };
 
 const SettingsSection = ({children, label}: Props) => {

@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   routines: {} as {[key: string]: Routine},
 };
 
-type InitialRoutineState = typeof INITIAL_STATE;
+export type InitialRoutineState = typeof INITIAL_STATE;
 
 const RoutineReducer: Reducer<InitialRoutineState, RoutineActions> = (
   state = INITIAL_STATE,
@@ -31,7 +31,8 @@ const RoutineReducer: Reducer<InitialRoutineState, RoutineActions> = (
           ),
         ),
       };
-
+    case routineActionTypes.BACKUP_ROUTINE:
+      return action.payload!;
     default:
       return state;
   }

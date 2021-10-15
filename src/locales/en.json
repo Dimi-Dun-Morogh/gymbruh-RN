@@ -24,6 +24,7 @@
   "last time done": "last time done",
   "haven't done yet": "haven't done yet",
   "amount of all sets": "amount of all sets",
+  "times done": "done times",
   "last set": "last set",
   "reps": "reps",
   "weight": "weight",
@@ -36,7 +37,11 @@
   "this field is required": "this field is required",
   "You did not finish your workout, all progress will be lost, you sure  to leave?": "You did not finish your workout, all progress will be lost, you sure  to leave?",
   "Add exercise": "Add exercise",
-  "Chose routine":"Chose routine",
+  "Chose routine": "Chose routine",
   "or add exercise": "or add exercise",
-  "Tap on exercise to select": "Tap on exercise to select"
+  "Tap on exercise to select": "Tap on exercise to select",
+  "create data backup": "create data backup",
+  "download data backup from device": "download data backup from device",
+  "data backup created successfully, check your downloads folder": "data backup created successfully, check your downloads folder",
+  "user data restored": "user data restored"
 }

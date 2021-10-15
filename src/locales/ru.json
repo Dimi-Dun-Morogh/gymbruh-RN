@@ -22,6 +22,7 @@
   "enter name": "введите название",
   "legs day": "день ног",
   "last time done": "последний раз",
+  "times done": "выполнено раз",
   "haven't done yet": "ещё не делал",
   "amount of all sets": "количество всех подходов",
   "last set": "последний подход",
@@ -38,5 +39,9 @@
   "Add exercise": "Добавить упражнение",
   "Chose routine":"Выберите программу",
   "or add exercise": "или добавьте упражнение",
-  "Tap on exercise to select": "тапните по упражнению"
+  "Tap on exercise to select": "тапните по упражнению",
+  "create data backup": "создать бэкап данных",
+  "download data backup from device": "загрузить бэкап с устройства",
+  "data backup created successfully, check your downloads folder": "бэкап создан успешно, проверьте папку downloads на вашем устройстве",
+  "user data restored": "данные пользователя восстановлены"
 }

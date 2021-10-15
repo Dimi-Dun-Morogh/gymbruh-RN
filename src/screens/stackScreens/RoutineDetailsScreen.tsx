@@ -5,6 +5,7 @@ import {routineCreateScreenProp, NavProp} from '../../types/routingTypes';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import {Exercise} from '../../redux/exercises/exercise.types';
 import {useAppSelector} from '../../hooks/storeHooks';
+import {useTranslation} from 'react-i18next';
 
 const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
   const {id} = route.params!.routine;
@@ -13,6 +14,7 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
     state => state.routinesState.routines[id],
   );
   const navigation = useNavigation<NavProp>();
+  const {t} = useTranslation();
 
   const renderExercises = () => {
     if (!exerciseState || !exercises.length) {
@@ -51,9 +53,11 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
   return (
     <View>
       <TextBlock>{name}</TextBlock>
-      <TextBlock>Выполнено раз - {allCount}</TextBlock>
       <TextBlock>
-        Дата последнего выполнения - {lastDate ? lastDate : ''}
+        {t('times done')} - {allCount}
+      </TextBlock>
+      <TextBlock>
+        {t('last time done')} - {lastDate ? lastDate : ''}
       </TextBlock>
       {renderExercises()}
     </View>

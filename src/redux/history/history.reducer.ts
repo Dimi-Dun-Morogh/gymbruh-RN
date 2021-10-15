@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   items: [] as HistoryItem[],
 };
 
-type INITIAL_STATE_TYPE = typeof INITIAL_STATE;
+export type INITIAL_STATE_TYPE = typeof INITIAL_STATE;
 
 const HistoryReducer: Reducer<INITIAL_STATE_TYPE, HistoryActions> = (
   state = INITIAL_STATE,
@@ -17,7 +17,8 @@ const HistoryReducer: Reducer<INITIAL_STATE_TYPE, HistoryActions> = (
         ...state,
         items: [...state.items, action.payload!],
       };
-
+    case HistoryActionTypes.BACKUP_HISTORY:
+      return action.payload!;
     default:
       return state;
   }

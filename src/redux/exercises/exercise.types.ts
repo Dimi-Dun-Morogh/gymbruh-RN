@@ -1,11 +1,12 @@
 import {IAction} from '../store';
 import {WorkOutSet} from '../workout/workout.types';
-
+import {InitialExerState} from './exercise.reducer';
 export enum exerciseActionTypes {
   CREATE_EXERCISE = 'CREATE_EXERCISE',
   UPDATE_EXERCISE = 'UPDATE_EXERCISE',
   EDIT_EXERCISE = 'EDIT_EXERCISE',
   DELETE_EXERCISE = 'DELETE_EXERCISE',
+  BACKUP_EXERCISE = 'BACKUP_EXERCISE',
 }
 
 export type Exercise = {
@@ -34,9 +35,14 @@ type UpdateExercise = IAction<
 >;
 type EditExercise = IAction<exerciseActionTypes.EDIT_EXERCISE, Exercise>;
 type DeleteExercise = IAction<exerciseActionTypes.DELETE_EXERCISE, string>;
+type BackUpExercises = IAction<
+  exerciseActionTypes.BACKUP_EXERCISE,
+  InitialExerState
+>;
 
 export type ExerciseActions =
   | CreateExercise
   | UpdateExercise
   | EditExercise
-  | DeleteExercise;
+  | DeleteExercise
+  | BackUpExercises;

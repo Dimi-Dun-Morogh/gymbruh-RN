@@ -10,7 +10,7 @@ React-Native, redux, TypeScript
 
 [![gymbruh](https://i.yapx.ru/OTGSWl.jpg "home screen")](https://i.yapx.ru/OTGSW.jpg)
 
-[![gymbruh](https://i.yapx.ru/OTGSXl.jpg "settings screen")](https://i.yapx.ru/OTGSXl.jpg)
+[![gymbruh](https://i.yapx.ru/OjuDDl.png "settings screen")](https://i.yapx.ru/OjuDDl.png)
 
 [![gymbruh](https://i.yapx.ru/OTGSUl.jpg "create routine screen")](https://i.yapx.ru/OTGSUl.jpg)
 
@@ -70,4 +70,8 @@ total blank lines - 305
 - [x] make an option to use workout without routine and add exercises manually;  ✅(24.09.2021)
 - [x] prompt user before leaving workout screen; ✅(24.09.2021)
 
+ ### :cow release 1.0 :cow
+___
 
+- [ ] init device's language for i18n on first launch
+- [x] back up user data to external storage ✅(14.10.2021)

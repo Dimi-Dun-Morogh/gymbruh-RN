@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next';
 
 type Props = {
   visible: boolean;
-  onSuccess: () => void;
+  onSuccess?: () => void;
   onDecline: () => void;
   text: string;
   children?: ReactNode;
@@ -15,7 +15,7 @@ type Props = {
 
 const Modal = ({
   visible,
-  onSuccess,
+  onSuccess = () => null,
   onDecline,
   text,
   children,
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     marginBottom: 30,
-    paddingRight: 50,
+    //paddingRight: 50,
+    paddingTop: 19,
   },
   buttonsContainerStyle: {
     flexDirection: 'row',
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     right: 0,
-    top: 0,
+    top: 10,
     // zIndex: 500,
   },
 });
