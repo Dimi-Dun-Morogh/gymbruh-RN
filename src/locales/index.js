@@ -1,10 +1,8 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import {store} from '../redux/store';
+import {getLocales} from 'react-native-localize';
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en: {
     translation: require('../locales/en.json'),
@@ -14,12 +12,35 @@ const resources = {
   },
 };
 
+export const defineLanguage = () => {
+  const {languages, currentLanguage} = store.getState().appSettingsState;
+
+  if (!currentLanguage.length) {
+    const deviceLang = getLocales()[0].languageCode;
+    if (languages.includes(deviceLang)) {
+      store.dispatch({
+        type: 'SET_LANGUAGE',
+        payload: deviceLang,
+      });
+      return deviceLang;
+    } else {
+      store.dispatch({
+        type: 'SET_LANGUAGE',
+        payload: 'en',
+      });
+      return 'en';
+    }
+  }
+  return currentLanguage;
+};
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: store.getState().appSettingsState.currentLanguage,
+  lng: 'en',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false,
   },
 });
-store.getState().appSettingsState.currentLanguage;
+
 export default i18n;

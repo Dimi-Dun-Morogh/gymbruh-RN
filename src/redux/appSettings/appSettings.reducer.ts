@@ -8,7 +8,7 @@ import {
 
 const INITIAL_STATE = {
   languages: languages,
-  currentLanguage: 'ru',
+  currentLanguage: '',
   weightPoints: weights,
   currentWeightPoint: 'kg',
   darkTheme: true,

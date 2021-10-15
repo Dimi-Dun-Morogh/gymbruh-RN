@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -27,13 +26,10 @@ import {IconButton as HeaderButton} from './components';
 import {Theme} from './themes/';
 import {useTheme} from './hooks/useTheme';
 import {useTranslation} from 'react-i18next';
-import i18n from './locales/';
+import i18n, {defineLanguage} from './locales/';
 import {useAppSelector} from './hooks/storeHooks';
 import {playASound} from './helpers';
-
-const initI18n = i18n;
-
-// const Stack = createNativeStackNavigator<RootStackScreenList>();
+const initi18n = i18n;
 
 const Stack = createStackNavigator<RootStackScreenList>();
 
@@ -42,6 +38,7 @@ const Tab = createBottomTabNavigator<BottomTabScreenList>();
 const Tabs = () => {
   const navigation = useNavigation<NavProp>();
   const [theme] = useTheme();
+
   const tabsAdditional = {
     tabBarActiveTintColor: '#fff',
     tabBarActiveBackgroundColor: '#8a63f2',
@@ -51,6 +48,7 @@ const Tabs = () => {
   const {t} = useTranslation();
   React.useEffect(() => {
     playASound.switchSound(soundOn);
+    i18n.changeLanguage(defineLanguage());
   }, [soundOn]);
 
   return (
