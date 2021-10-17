@@ -20,11 +20,10 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
     if (!exerciseState || !exercises.length) {
       return null;
     }
-    const data = exercises.map(nId => {
-      return exerciseState[nId];
-    });
 
-    return (
+    const data = exercises.map(exId => exerciseState[exId]);
+
+    return data.length ? (
       <FlatList
         data={data}
         renderItem={({item}: {item: Exercise}) => (
@@ -37,7 +36,7 @@ const RoutineDetailsScreen = ({route}: routineCreateScreenProp) => {
           />
         )}
       />
-    );
+    ) : null;
   };
 
   useFocusEffect(

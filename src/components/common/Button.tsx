@@ -5,6 +5,7 @@ import {
   StyleSheet,
   StyleProp,
   ViewStyle,
+  TextStyle,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useTheme} from '../../hooks/useTheme';
@@ -18,6 +19,7 @@ type ButtonProps = {
   icon?: string;
   iconSize?: number;
   ButtonStyle?: StyleProp<ViewStyle>;
+  TextStyles?: StyleProp<TextStyle>;
 };
 
 const Button = ({
@@ -28,6 +30,7 @@ const Button = ({
   icon,
   iconSize,
   ButtonStyle,
+  TextStyles,
 }: ButtonProps) => {
   const [theme] = useTheme();
   const styles = style(theme, bgColor, color);
@@ -36,19 +39,21 @@ const Button = ({
     <TouchableOpacity
       style={[styles.buttonStyle, ButtonStyle]}
       onPress={onPress}>
-      <Text style={styles.textStyle}>
-        {children}
-        {icon ? (
-          <Icon
-            name={icon}
-            style={
-              iconSize
-                ? [styles.textStyle, {fontSize: iconSize}]
-                : styles.textStyle
-            }
-          />
-        ) : null}
-      </Text>
+      <Text style={[styles.textStyle, TextStyles]}>{children}</Text>
+      {icon ? (
+        <Icon
+          name={icon}
+          style={
+            iconSize
+              ? [
+                  styles.textStyle,
+                  {fontSize: iconSize, alignSelf: 'center'},
+                  TextStyles,
+                ]
+              : [styles.textStyle, TextStyles, {alignSelf: 'center'}]
+          }
+        />
+      ) : null}
     </TouchableOpacity>
   );
 };
@@ -59,9 +64,11 @@ const style = (theme: Theme, bgColor?: string, color?: string) =>
       backgroundColor: bgColor || theme.bgcMain,
       borderRadius: 10,
       marginHorizontal: 20,
-      borderColor: 'black',
+      borderColor: theme.textColorMain,
       borderWidth: 1,
       borderStyle: 'solid',
+      flexDirection: 'row',
+      justifyContent: 'center',
     },
     textStyle: {
       color: color || theme.textColorMain,

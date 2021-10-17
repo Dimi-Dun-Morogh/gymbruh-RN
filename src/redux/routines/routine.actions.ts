@@ -41,3 +41,10 @@ export const deleteRoutine = (id: string) => {
     payload: id,
   };
 };
+
+export const routineGlobalExercDeletion = (id: string) => {
+  return {
+    type: routineActionTypes.GLOBAL_EXERCISE_DELETION,
+    payload: id,
+  };
+};

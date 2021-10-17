@@ -44,12 +44,8 @@ const Tabs = () => {
     tabBarActiveBackgroundColor: '#8a63f2',
     tabBarInactiveTintColor: theme.textColorMain,
   };
-  const soundOn = useAppSelector(state => state.appSettingsState.soundOn);
+
   const {t} = useTranslation();
-  React.useEffect(() => {
-    playASound.switchSound(soundOn);
-    i18n.changeLanguage(defineLanguage());
-  }, [soundOn]);
 
   return (
     <Tab.Navigator
@@ -202,6 +198,11 @@ const StackNav = () => {
 };
 
 const Router = () => {
+  const soundOn = useAppSelector(state => state.appSettingsState.soundOn);
+  React.useEffect(() => {
+    playASound.switchSound(soundOn);
+    i18n.changeLanguage(defineLanguage());
+  }, [soundOn]);
   return (
     <NavigationContainer>
       <StackNav />

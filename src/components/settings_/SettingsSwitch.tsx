@@ -16,6 +16,7 @@ const SettingsSwitch = ({value, onValueChange}: Props) => {
       ios_backgroundColor="#3e3e3e"
       onValueChange={onValueChange}
       value={value}
+      style={{height: 48, width: 48}}
     />
   );
 };

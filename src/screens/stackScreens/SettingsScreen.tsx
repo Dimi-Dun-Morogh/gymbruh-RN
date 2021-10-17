@@ -60,7 +60,7 @@ const SettingsScreen = () => {
         topClose
         visible={modal}
         onDecline={() => setModal(false)}
-        text={t(modalText)}
+        text={t(modalText) + ' file backUp.gymbruh'}
       />
       <SettingsSection label={t('dark theme')}>
         <SettingsSwitch
@@ -96,16 +96,18 @@ const SettingsScreen = () => {
         <Button
           onPress={createBackUp}
           icon="add"
-          iconSize={33}
+          iconSize={45}
           ButtonStyle={{marginHorizontal: 0}}
+          TextStyles={{padding: 0}}
         />
       </SettingsSection>
       <SettingsSection label={t('download data backup from device')}>
         <Button
           onPress={pickFileBackUp}
           icon="file-upload"
-          iconSize={33}
+          iconSize={45}
           ButtonStyle={{marginHorizontal: 0}}
+          TextStyles={{padding: 0}}
         />
       </SettingsSection>
     </View>

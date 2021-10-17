@@ -6,6 +6,7 @@ export enum routineActionTypes {
   DELETE_ROUTINE = 'DELETE_ROUTINE',
   EDIT_ROUTINE = 'EDIT_ROUTINE',
   BACKUP_ROUTINE = 'BACKUP_ROUTINE',
+  GLOBAL_EXERCISE_DELETION = 'GLOBAL_EXERCISE_DELETION',
 }
 
 export type Routine = {
@@ -23,9 +24,14 @@ type BackUpRoutine = IAction<
   routineActionTypes.BACKUP_ROUTINE,
   InitialRoutineState
 >;
+type GlobalExercDeletion = IAction<
+  routineActionTypes.GLOBAL_EXERCISE_DELETION,
+  string
+>;
 
 export type RoutineActions =
   | CreateRoutine
   | DeleteRoutine
   | EditRoutine
-  | BackUpRoutine;
+  | BackUpRoutine
+  | GlobalExercDeletion;

@@ -21,6 +21,7 @@ const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
         value={'' + value}
         onChangeText={onValueChange}
         keyboardType="numeric"
+        accessibilityLabel={label}
       />
     </View>
   );

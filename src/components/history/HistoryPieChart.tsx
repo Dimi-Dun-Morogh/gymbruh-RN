@@ -36,16 +36,18 @@ const HistoryPieChart = () => {
   })();
 
   const renderCartItems = () => {
-    return PieData.itemsWithColors.map(item => (
-      <View
-        style={{...styles.chartWrap, backgroundColor: item.color}}
-        key={item.id}>
-        <Text style={styles.chartText}>{item.name}</Text>
-        <Text style={styles.chartText}>
-          {t('amount of all sets')} : {item.allSets}
-        </Text>
-      </View>
-    ));
+    return PieData.itemsWithColors
+      .sort((a, b) => b.allSets - a.allSets)
+      .map(item => (
+        <View
+          style={{...styles.chartWrap, backgroundColor: item.color}}
+          key={item.id}>
+          <Text style={styles.chartText}>{item.name}</Text>
+          <Text style={styles.chartText}>
+            {t('amount of all sets')} : {item.allSets}
+          </Text>
+        </View>
+      ));
   };
 
   return (

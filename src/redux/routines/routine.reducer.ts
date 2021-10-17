@@ -1,5 +1,5 @@
 import {Routine, RoutineActions, routineActionTypes} from './routine.types';
-
+import {onGlobalExerciseDeletion} from './routine.helpers';
 import {Reducer} from 'redux';
 
 const INITIAL_STATE = {
@@ -33,6 +33,14 @@ const RoutineReducer: Reducer<InitialRoutineState, RoutineActions> = (
       };
     case routineActionTypes.BACKUP_ROUTINE:
       return action.payload!;
+    case routineActionTypes.GLOBAL_EXERCISE_DELETION:
+      return {
+        ...state,
+        routines: onGlobalExerciseDeletion(
+          JSON.parse(JSON.stringify(state.routines)),
+          action.payload!,
+        ),
+      };
     default:
       return state;
   }

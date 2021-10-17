@@ -6,6 +6,7 @@ import {WorkOutSet} from '../../redux/workout/workout.types';
 
 const HistoryScreen = () => {
   const history = useAppSelector(state => state.historyState.items);
+
   const historyExerc = history
     .reduce((acc, item) => {
       return [...acc, ...item.sets];

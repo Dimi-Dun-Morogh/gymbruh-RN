@@ -1,6 +1,8 @@
 import {generateId} from '../../helpers';
 import {WorkOutSet} from '../workout/workout.types';
 import {Exercise, exerciseActionTypes} from './exercise.types';
+import {routineGlobalExercDeletion} from '../routines/routine.actions';
+import {store} from '../store';
 
 export const createExercise = (name: string) => {
   const id = generateId.id();
@@ -43,6 +45,8 @@ export const editExercise = (exercise: Exercise) => {
 };
 
 export const deleteExercise = (id: string) => {
+  //! delete from history and routines also
+  store.dispatch(routineGlobalExercDeletion(id));
   return {
     type: exerciseActionTypes.DELETE_EXERCISE,
     payload: id,

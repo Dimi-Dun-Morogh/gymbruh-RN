@@ -2,27 +2,27 @@
 
 Приложение дневник тренировок, позволяет создавать программы, упражнения, видеть свой прогресс и отслеживать статистику\
 google play - https://play.google.com/store/apps/details?id=com.gymbruh
+\
 [![gymbruh](https://i.yapx.ru/OVV0wm.jpg "google play")](https://i.yapx.ru/OVV0wm.jpg)
 ***
 
 >tech stack:
 React-Native, redux, TypeScript
 
-[![gymbruh](https://i.yapx.ru/OTGSWl.jpg "home screen")](https://i.yapx.ru/OTGSW.jpg)
+[![gymbruh](https://i.yapx.ru/On5KLl.png "home screen")](https://i.yapx.ru/On5KLl.png)
 
-[![gymbruh](https://i.yapx.ru/OjuDDl.png "settings screen")](https://i.yapx.ru/OjuDDl.png)
+[![gymbruh](https://i.yapx.ru/On5KWl.png "settings screen")](https://i.yapx.ru/On5KWl.png)
 
-[![gymbruh](https://i.yapx.ru/OTGSUl.jpg "create routine screen")](https://i.yapx.ru/OTGSUl.jpg)
+[![gymbruh](https://i.yapx.ru/On5KIl.png"create routine screen")](https://i.yapx.ru/On5KIl.png)
 
-[![gymbruh](https://i.yapx.ru/OTGSVl.jpg "workout screen")](https://i.yapx.ru/OTGSVl.jpg)
+[![gymbruh](https://i.yapx.ru/On5KJl.png "workout screen")](https://i.yapx.ru/On5KJl.png)
 
-[![gymbruh](https://i.yapx.ru/OTGSYl.jpg "history screen")](https://i.yapx.ru/OTGSYl.jpg)
+[![gymbruh](https://i.yapx.ru/On5KMl.png "history screen")](https://i.yapx.ru/On5KMl.png)
 
-[![gymbruh](https://i.yapx.ru/OTGSZl.jpg "history screen2")](https://i.yapx.ru/OTGSZl.jpg)
 
-[![gymbruh](https://i.yapx.ru/OTGScl.jpg "exercise detailed screen")](https://i.yapx.ru/OTGScl.jpg)
+[![gymbruh](https://i.yapx.ru/On5KOl.png "exercise detailed screen")](https://i.yapx.ru/On5KOl.png)
 
-[![gymbruh](https://i.yapx.ru/OTGSal.jpg "routine detailed screen")](https://i.yapx.ru/OTGSal.jpg)
+[![gymbruh](https://i.yapx.ru/On5KTl.png "routine detailed screen")](https://i.yapx.ru/On5KTl.png)
 
 
 ### TO DO :trollface:
@@ -56,3 +56,12 @@ ___
 
 - [x] init device's language for i18n on first launch ✅(15.10.2021)
 - [x] back up user data to external storage ✅(14.10.2021)
+
+ ### 17.10.2021 🐄 release 1.0.1 🐄
+___
+
+:beetle: bugs :beetle: :
+- ~~stack screen titles on app launch translated to language  set in i18n init config rather then language from redux~~
+- ~~list items in chart pie should be sorted by amount~~
+- ~~if exercise that was in routine was deleted and you go detailedRoutineScreen, app will crush~~
+- record weight won't update if weight is same but reps are more, need to add check on reps

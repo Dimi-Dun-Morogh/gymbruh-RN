@@ -65,7 +65,8 @@ class PlayASound {
     }
   }
   onWorkOutSubmit() {
-    this.play('shao_laugh.mp3');
+    this.play('laugh.mp3');
+    this.resetScore();
   }
   resetScore() {
     this.hitsCount = 0;

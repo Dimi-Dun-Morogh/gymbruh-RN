@@ -28,8 +28,13 @@ const Modal = ({
         <View style={styles.contentContainerStyle}>
           {topClose ? (
             <View style={styles.topButtonContainer}>
-              <Button onPress={onDecline} bgColor="red" color="#fff">
-                <Icon name="close" size={20} />
+              <Button
+                onPress={onDecline}
+                bgColor="red"
+                color="#fff"
+                TextStyles={{padding: 0}}
+                ButtonStyle={{padding: 0, borderColor: '#fff'}}>
+                <Icon name="close" size={30} />
               </Button>
             </View>
           ) : null}
@@ -37,10 +42,18 @@ const Modal = ({
           {children}
           {!topClose ? (
             <View style={styles.buttonsContainerStyle}>
-              <Button onPress={onDecline} bgColor="red" color="#fff">
+              <Button
+                onPress={onDecline}
+                ButtonStyle={{borderColor: '#fff'}}
+                bgColor="red"
+                color="#fff">
                 <Icon name="close" size={33} />
               </Button>
-              <Button onPress={onSuccess} bgColor="green" color="#fff">
+              <Button
+                onPress={onSuccess}
+                ButtonStyle={{borderColor: '#fff'}}
+                bgColor="green"
+                color="#fff">
                 <Icon name="check" size={33} />
               </Button>
             </View>

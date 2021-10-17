@@ -27,6 +27,7 @@ const Input = ({label, value, onChangeText, placeholder, password}: Prop) => {
         secureTextEntry={password}
         placeholderTextColor="gray"
         autoCapitalize={'none'}
+        accessibilityLabel={label}
       />
     </View>
   );
@@ -49,7 +50,7 @@ const style = (theme: Theme) =>
     },
     labelStyle: {
       fontSize: 20,
-      color: '#fff',
+      color: theme.textColorMain,
       paddingBottom: 10,
     },
     containerStyle: {
