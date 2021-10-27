@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {useAppSelector} from '../../hooks/storeHooks';
 import {useDispatch} from 'react-redux';
 import {
@@ -55,7 +55,7 @@ const SettingsScreen = () => {
   };
 
   return (
-    <View style={styles.containerStyle}>
+    <ScrollView style={styles.containerStyle}>
       <Modal
         topClose
         visible={modal}
@@ -68,6 +68,7 @@ const SettingsScreen = () => {
           onValueChange={() => {
             dispatch(setDarkTheme(!darkTheme));
           }}
+          accesibilityText="theme"
         />
       </SettingsSection>
       <SettingsSection label={t('language')}>
@@ -90,13 +91,14 @@ const SettingsScreen = () => {
           onValueChange={() => {
             dispatch(setSound(!soundOn));
           }}
+          accesibilityText="sound"
         />
       </SettingsSection>
       <SettingsSection label={t('create data backup')}>
         <Button
           onPress={createBackUp}
           icon="add"
-          iconSize={45}
+          iconSize={46}
           ButtonStyle={{marginHorizontal: 0}}
           TextStyles={{padding: 0}}
         />
@@ -105,12 +107,12 @@ const SettingsScreen = () => {
         <Button
           onPress={pickFileBackUp}
           icon="file-upload"
-          iconSize={45}
+          iconSize={46}
           ButtonStyle={{marginHorizontal: 0}}
           TextStyles={{padding: 0}}
         />
       </SettingsSection>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -118,7 +120,7 @@ const style = (theme: Theme) =>
   StyleSheet.create({
     containerStyle: {
       backgroundColor: theme.bgcSecondary,
-      paddingTop: 40,
+      paddingTop: 20,
       flex: 1,
     },
   });

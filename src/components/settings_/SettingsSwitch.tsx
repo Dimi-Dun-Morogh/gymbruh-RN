@@ -5,9 +5,10 @@ import {useTheme} from '../../hooks/useTheme';
 type Props = {
   onValueChange: () => void;
   value: boolean;
+  accesibilityText?: string;
 };
 
-const SettingsSwitch = ({value, onValueChange}: Props) => {
+const SettingsSwitch = ({value, onValueChange, accesibilityText}: Props) => {
   const [theme] = useTheme();
   return (
     <Switch
@@ -17,6 +18,7 @@ const SettingsSwitch = ({value, onValueChange}: Props) => {
       onValueChange={onValueChange}
       value={value}
       style={{height: 48, width: 48}}
+      accessibilityLabel={'switch ' + accesibilityText}
     />
   );
 };

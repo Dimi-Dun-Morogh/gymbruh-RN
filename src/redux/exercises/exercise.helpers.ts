@@ -33,7 +33,7 @@ export const handleExerciseUpdate = (
       : oldExercise.recordReps;
   };
   const isRecordWeight = () => {
-    return oldExercise.recordWeight.weight < weight
+    return oldExercise.recordWeight.weight <= weight
       ? {
           reps,
           weight,

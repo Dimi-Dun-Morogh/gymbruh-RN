@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ViewStyle,
+  StyleProp,
+} from 'react-native';
 
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes';
@@ -10,13 +17,22 @@ type Prop = {
   onChangeText: (text: string) => void;
   placeholder: string;
   password?: boolean;
+  containerStyle?: StyleProp<ViewStyle>;
 };
-const Input = ({label, value, onChangeText, placeholder, password}: Prop) => {
+
+const Input = ({
+  label,
+  value,
+  onChangeText,
+  placeholder,
+  password,
+  containerStyle,
+}: Prop) => {
   const [theme] = useTheme();
   const styles = style(theme);
 
   return (
-    <View style={styles.containerStyle}>
+    <View style={[styles.containerStyle, containerStyle]}>
       <Text style={styles.labelStyle}>{label}</Text>
       <TextInput
         style={styles.inputStyle}
@@ -27,7 +43,8 @@ const Input = ({label, value, onChangeText, placeholder, password}: Prop) => {
         secureTextEntry={password}
         placeholderTextColor="gray"
         autoCapitalize={'none'}
-        accessibilityLabel={label}
+        accessibilityLabel={'enter ' + label}
+        accessibilityHint={value}
       />
     </View>
   );

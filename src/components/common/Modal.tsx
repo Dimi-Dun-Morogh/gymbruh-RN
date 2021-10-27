@@ -34,7 +34,7 @@ const Modal = ({
                 color="#fff"
                 TextStyles={{padding: 0}}
                 ButtonStyle={{padding: 0, borderColor: '#fff'}}>
-                <Icon name="close" size={30} />
+                <Icon name="close" size={48} />
               </Button>
             </View>
           ) : null}
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     right: 0,
-    top: 10,
+    top: 0,
     // zIndex: 500,
   },
 });

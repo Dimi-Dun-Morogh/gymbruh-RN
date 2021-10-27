@@ -1,0 +1,32 @@
+{
+  // для bash терминала
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build android ADB",
+      "type": "shell",
+      "command": "cd android && ./gradlew bundleRelease",
+      "windows": {
+        "command": "cd android && rm 'app\\build\\outputs\\bundle\\release\\app-release.aab'   && ./gradlew bundleRelease && start 'app\\build\\outputs\\bundle\\release'"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "build android APKS",
+      "type": "shell",
+      "command": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew clean && ./gradlew assembleRelease",
+      "windows": {
+        "command": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew clean && ./gradlew assembleRelease"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+  ]
+}

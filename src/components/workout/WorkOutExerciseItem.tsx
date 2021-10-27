@@ -70,6 +70,7 @@ const style = (theme: Theme) =>
       borderRadius: 10,
       margin: 5,
       paddingVertical: 5,
+      flexWrap: 'wrap',
     },
     textStyle: {
       color: theme.textColorMain,

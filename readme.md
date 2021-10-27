@@ -58,10 +58,12 @@ ___
 - [x] back up user data to external storage ✅(14.10.2021)
 
  ### 17.10.2021 🐄 release 1.0.1 🐄
+ ### 27.10.2021 🐄 release 1.0.2 🐄
 ___
 
 :beetle: bugs :beetle: :
 - ~~stack screen titles on app launch translated to language  set in i18n init config rather then language from redux~~
 - ~~list items in chart pie should be sorted by amount~~
 - ~~if exercise that was in routine was deleted and you go detailedRoutineScreen, app will crush~~
-- record weight won't update if weight is same but reps are more, need to add check on reps
+- ~~record weight won't update if weight is same but reps are more, need to add check on reps~~
+- ~~createRoutineScreen is not scrollable~~

@@ -7,9 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
-    "bundle-release": "cd android && ./gradlew bundleRelease",
-    "assemble-release": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew clean && ./gradlew assembleRelease"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.7",
@@ -33,6 +31,7 @@
     "react-native-localize": "^2.1.5",
     "react-native-pie-chart": "^2.0.2",
     "react-native-reanimated": "^2.3.0-alpha.2",
+    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^3.3.0",
     "react-native-screens": "^3.6.0",
     "react-native-sound": "^0.11.1",

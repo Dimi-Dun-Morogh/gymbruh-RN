@@ -101,32 +101,30 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
     }
 
     return (
-      <View style={{marginBottom: 25}}>
-        <FlatList
-          data={data}
-          renderItem={({item}: {item: Exercise}) => (
-            <ExerciseListItem
-              name={item.name}
-              date={item.lastDate}
-              selected={selectedExerc.has(item.id)}
-              onPress={() => {
-                if (selectedExerc.has(item.id)) {
-                  setSelectedExerc(
-                    prev => new Set([...prev].filter(n => n !== item.id)),
-                  );
-                } else {
-                  setSelectedExerc(prev => new Set(prev.add(item.id)));
-                }
-              }}
-            />
-          )}
-        />
-      </View>
+      <FlatList
+        data={data}
+        renderItem={({item}: {item: Exercise}) => (
+          <ExerciseListItem
+            name={item.name}
+            date={item.lastDate}
+            selected={selectedExerc.has(item.id)}
+            onPress={() => {
+              if (selectedExerc.has(item.id)) {
+                setSelectedExerc(
+                  prev => new Set([...prev].filter(n => n !== item.id)),
+                );
+              } else {
+                setSelectedExerc(prev => new Set(prev.add(item.id)));
+              }
+            }}
+          />
+        )}
+      />
     );
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center'}}>
+    <View style={{flex: 1}}>
       <Modal
         text="'Are you sure to delete?"
         visible={modalVisible}
@@ -134,6 +132,7 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
         onSuccess={() => handleDeletion()}
       />
       <Input
+        containerStyle={{paddingTop: 15, marginBottom: 0}}
         label={t('enter name')}
         value={name}
         placeholder={t('legs day')}
@@ -144,7 +143,9 @@ const CreateRoutineScreen = ({route}: routineCreateScreenProp) => {
       />
       <ErrorsInput errors={errors} />
       {renderExercises()}
-      <Button onPress={onSubmit}>OK</Button>
+      <Button onPress={onSubmit} ButtonStyle={{marginBottom: 10}}>
+        OK
+      </Button>
     </View>
   );
 };

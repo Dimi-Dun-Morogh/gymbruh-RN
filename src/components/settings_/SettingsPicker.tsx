@@ -44,6 +44,7 @@ const style = (theme: Theme) =>
     },
     pickerStyle: {
       width: 110,
+      //maxWidth: '20%',
       backgroundColor: theme.bgcSecondary,
       color: theme.textColorMain,
     },

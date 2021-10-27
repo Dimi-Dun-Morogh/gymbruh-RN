@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {useTheme} from '../../hooks/useTheme';
 import {Theme} from '../../themes';
+import {RFPercentage} from 'react-native-responsive-fontsize';
 
 type Props = {
   label: string;
@@ -21,7 +22,7 @@ const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
         value={'' + value}
         onChangeText={onValueChange}
         keyboardType="numeric"
-        accessibilityLabel={label}
+        accessibilityLabel={'enter ' + label}
       />
     </View>
   );
@@ -31,7 +32,8 @@ const style = (theme: Theme) =>
   StyleSheet.create({
     textStyle: {
       color: theme.textColorMain,
-      fontSize: 24,
+      //fontSize: 24,
+      fontSize: RFPercentage(4.5),
     },
     inputStyle: {
       height: 50,

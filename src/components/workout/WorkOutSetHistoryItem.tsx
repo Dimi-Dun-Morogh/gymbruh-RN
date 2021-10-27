@@ -43,6 +43,7 @@ const style = (theme: Theme) =>
     containerStyle: {
       flexDirection: 'row',
       alignItems: 'center',
+      flexWrap: 'wrap',
     },
     textStyle: {
       color: theme.textColorMain,

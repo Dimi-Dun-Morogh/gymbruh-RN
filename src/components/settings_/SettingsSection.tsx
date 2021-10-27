@@ -23,6 +23,7 @@ const style = (theme: Theme) =>
   StyleSheet.create({
     settingsContainer: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'space-between',
       marginBottom: 15,
@@ -35,6 +36,8 @@ const style = (theme: Theme) =>
       color: theme.textColorMain,
       fontWeight: 'bold',
       fontSize: 20,
+      maxWidth: '80%',
+
     },
   });
 

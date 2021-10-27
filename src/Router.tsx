@@ -58,6 +58,7 @@ const Tabs = () => {
         name="home"
         component={HomeScreen}
         options={{
+          tabBarAccessibilityLabel: 'navigate home',
           title: 'gymbruh',
           headerRight: () => {
             return (
@@ -79,6 +80,7 @@ const Tabs = () => {
         name="routine"
         component={RoutineScreen}
         options={{
+          tabBarAccessibilityLabel: 'navigate routines',
           title: t('routines'),
           tabBarLabel: t('routines'),
           headerRight: () => {
@@ -100,6 +102,7 @@ const Tabs = () => {
         name="exercises"
         component={ExercisesScreen}
         options={{
+          tabBarAccessibilityLabel: 'navigate exercises',
           title: t('exercises'),
           tabBarLabel: t('exercises'),
           headerRight: () => {

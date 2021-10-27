@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View, StyleSheet} from 'react-native';
-import {IconButton, WorkOutSetInput, Button} from '../';
+import {WorkOutSetInput, Button} from '../';
 
 type Props = {
   onSetSubmit: (reps: string, weight: string) => void;
@@ -21,16 +21,6 @@ const WorkOutSet = ({onSetSubmit}: Props) => {
         onValueChange={setWeight}
       />
 
-      {/* <IconButton
-        iconName="check-circle"
-        color="#8a63f2"
-        size={33}
-        onPress={() => {
-          onSetSubmit(reps, weight);
-          setReps('');
-          setWeight('');
-        }}
-      /> */}
       <Button
         onPress={() => {
           onSetSubmit(reps, weight);
@@ -55,6 +45,8 @@ const styles = StyleSheet.create({
   containerStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
+    //flexWrap: 'wrap',
+    width: '100%',
   },
   textStyle: {
     color: '#fff',
