@@ -44,7 +44,7 @@ const Input = ({
         placeholderTextColor="gray"
         autoCapitalize={'none'}
         accessibilityLabel={'enter ' + label}
-        accessibilityHint={value}
+        accessibilityValue={{text: value}}
       />
     </View>
   );

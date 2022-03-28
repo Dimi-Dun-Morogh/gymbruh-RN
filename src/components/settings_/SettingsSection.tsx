@@ -37,7 +37,6 @@ const style = (theme: Theme) =>
       fontWeight: 'bold',
       fontSize: 20,
       maxWidth: '80%',
-
     },
   });
 

@@ -24,7 +24,7 @@ export const handleExerciseUpdate = (
   const {date, reps, weight} = set;
 
   const isRecordReps = () => {
-    return oldExercise.recordReps.reps < reps
+    return oldExercise.recordReps.reps <= reps
       ? {
           reps,
           weight,

@@ -23,6 +23,8 @@ const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
         onChangeText={onValueChange}
         keyboardType="numeric"
         accessibilityLabel={'enter ' + label}
+        accessibilityHint={value + ''}
+        accessibilityValue={{text: value + ''}}
       />
     </View>
   );
@@ -33,7 +35,7 @@ const style = (theme: Theme) =>
     textStyle: {
       color: theme.textColorMain,
       //fontSize: 24,
-      fontSize: RFPercentage(4.5),
+      fontSize: RFPercentage(3.3),
     },
     inputStyle: {
       height: 50,
