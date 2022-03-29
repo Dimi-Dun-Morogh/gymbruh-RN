@@ -67,3 +67,4 @@ ___
 - ~~if exercise that was in routine was deleted and you go detailedRoutineScreen, app will crush~~
 - ~~record weight won't update if weight is same but reps are more, need to add check on reps~~
 - ~~createRoutineScreen is not scrollable~~
+- ~~immutable state invariant middleware warnings~~
