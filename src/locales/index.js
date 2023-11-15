@@ -37,6 +37,7 @@ export const defineLanguage = () => {
 i18n.use(initReactI18next).init({
   resources,
   lng: 'en',
+  compatibilityJSON: 'v3',
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

@@ -42,10 +42,12 @@ const HistoryPieChart = () => {
         <View
           style={{...styles.chartWrap, backgroundColor: item.color}}
           key={item.id}>
+            <>
           <Text style={styles.chartText}>{item.name}</Text>
           <Text style={styles.chartText}>
             {t('amount of all sets')} : {item.allSets}
           </Text>
+          </>
         </View>
       ));
   };

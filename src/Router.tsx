@@ -54,6 +54,7 @@ const Tabs = () => {
         ...tabsAdditional,
       }}
       sceneContainerStyle={{backgroundColor: theme.bgcContent}}>
+        <>
       <Tab.Screen
         name="home"
         component={HomeScreen}
@@ -120,6 +121,7 @@ const Tabs = () => {
           ),
         }}
       />
+      </>
     </Tab.Navigator>
   );
 };

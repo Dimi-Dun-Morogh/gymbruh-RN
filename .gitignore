@@ -1,7 +1,24 @@
 # OSX
 #
 .DS_Store
-
+ios/.xcode.env.local
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+npm-debug.log
+yarn-error.log
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
+# testing
+/coverage
 # Xcode
 #
 build/
