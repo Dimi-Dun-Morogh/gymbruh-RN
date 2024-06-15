@@ -33,7 +33,7 @@ const WorkOutSetInput = ({label, value, onValueChange}: Props) => {
 const style = (theme: Theme) =>
   StyleSheet.create({
     textStyle: {
-      color: theme.textColorMain,
+       color: theme.textColorMain,
       //fontSize: 24,
       fontSize: RFPercentage(3.3),
     },
@@ -42,9 +42,10 @@ const style = (theme: Theme) =>
       width: 55,
       fontSize: 28,
       paddingVertical: 1,
-      backgroundColor: '#fff',
+       backgroundColor: '#fff',
       borderColor: 'green',
       borderWidth: 3,
+      color:'black'
     },
     inputContainer: {
       flexDirection: 'row',
